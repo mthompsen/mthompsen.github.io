@@ -21,7 +21,7 @@ Herein lies the problem. The management component of this work exists in documen
 
 ## What Aquinas had to do with it
 
-Thomas Aquinas defines truth as adaequatio rei et intellectus – the conformity of the intellect with the thing. A claim is true if what the mind asserts is what actually exists. The thing exists irrespective of your claim, and truth and falsehood lie solely in the nature of the claims we make about that thing. Compliance documents are bundles of these claims. If an SSP states that audit logging has been implemented, that statement is a claim about a real-world machine. The server neither knows nor cares what the binder says; the claim is true or false depending on whether it matches the reality of the machine. Many compliance failures are simple: documents stop matching their real-world counterparts, through accident, wishful thinking, or deliberate dishonesty.
+Thomas Aquinas defines truth as adaequatio rei et intellectus, the conformity of the intellect with the thing. A claim is true if what the mind asserts is what actually exists. The thing exists irrespective of your claim, and truth and falsehood lie solely in the nature of the claims we make about that thing. Compliance documents are bundles of these claims. If an SSP states that audit logging has been implemented, that statement is a claim about a real-world machine. The server neither knows nor cares what the binder says; the claim is true or false depending on whether it matches the reality of the machine. Many compliance failures are simple: documents stop matching their real-world counterparts, through accident, wishful thinking, or deliberate dishonesty.
 
 Aquinas also proposed a term for making claims with insufficient proof: rash judgment, a fault even when the claim happens to be correct. That idea was foundational to a key design principle of the tool.
 
@@ -37,7 +37,7 @@ I'll walk through each stage:
 
 ![High water mark example: three information types rolling up to an overall moderate rating](/assets/images/castellan-high-water-mark.svg)
 
-This calculation is a simple pure function – same inputs, same output – and is fully unit-tested. There's no judgment call hidden in it.
+This calculation is a simple pure function (same inputs, same output) and is fully unit-tested. There's no judgment call hidden in it.
 
 **Select.** The system's high water mark determines which NIST 800-53 baseline is used (149 controls for low, 287 for moderate, 370 for high). Castellan doesn't rely on hardcoded lists. Instead, it downloads NIST's machine-readable catalog and baseline files (in NIST's own OSCAL JSON format) and dynamically determines the correct baseline from the source of truth. The NIST artifacts are downloaded once and then cached locally, so the tool can run entirely offline thereafter. The idea here is to base every claim on the definitive artifact: a hardcoded list is a copy, and copies drift.
 
