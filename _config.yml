@@ -1,0 +1,17 @@
+# Site settings — used by the minima theme and jekyll-seo-tag.
+title: Mason Thompsen
+description: Notes on security engineering and software projects.
+author: Mason Thompsen
+url: "https://mthompsen.github.io"
+baseurl: ""
+
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Show post excerpts on the home page list.
+show_excerpts: true
+
+# Clean date-based URLs: /2026/06/10/post-title.html
+permalink: /:year/:month/:day/:title:output_ext
