@@ -4,7 +4,6 @@ title: "Map and Fortress: Why I Built Castellan"
 date: 2026-06-10 13:30:00 -0500
 categories: [security, projects]
 tags: [nist, compliance, rmf, oscal, python]
-published: false
 ---
 
 A castellan was an officer in charge of a fortress's defenses. Not the officer that drew the fortress on parchment, and not the officer that filed that parchment away in an archive. The officer that walked the walls, checked the gates, counted the stores, and then informed their lord what was actually present on the fortress grounds. I built a command line tool called [Castellan](https://github.com/mthompsen/castellan) because what passes for modern security compliance is overflowing with parchment, and lacking in wall-walking. Here, I explain what gap the tool fills, how its components work together, and what a 13th century Dominican friar was doing popping into my head during development.
