@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 330" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect width="720" height="330" fill="#ffffff"/>
+  <text x="40" y="30" font-size="12" font-weight="bold" fill="#486581">THE SCAN · 20 CHECKS AGAINST A REAL UBUNTU HOST</text>
+  <g>
+    <rect x="40" y="44" width="150" height="62" rx="10" fill="#f0fff4" stroke="#2f855a" stroke-width="1.5"/>
+    <text x="115" y="74" font-size="24" font-weight="bold" fill="#2f855a" text-anchor="middle">8</text>
+    <text x="115" y="94" font-size="12" fill="#2f855a" text-anchor="middle">pass</text>
+    <rect x="206" y="44" width="150" height="62" rx="10" fill="#fff5f5" stroke="#c53030" stroke-width="1.5"/>
+    <text x="281" y="74" font-size="24" font-weight="bold" fill="#c53030" text-anchor="middle">5</text>
+    <text x="281" y="94" font-size="12" fill="#c53030" text-anchor="middle">fail</text>
+    <rect x="372" y="44" width="150" height="62" rx="10" fill="#fffaf0" stroke="#b7791f" stroke-width="1.5"/>
+    <text x="447" y="74" font-size="24" font-weight="bold" fill="#b7791f" text-anchor="middle">1</text>
+    <text x="447" y="94" font-size="12" fill="#b7791f" text-anchor="middle">error</text>
+    <rect x="538" y="44" width="150" height="62" rx="10" fill="#f7fafc" stroke="#718096" stroke-width="1.5"/>
+    <text x="613" y="74" font-size="24" font-weight="bold" fill="#718096" text-anchor="middle">6</text>
+    <text x="613" y="94" font-size="12" fill="#718096" text-anchor="middle">not applicable</text>
+  </g>
+  <text x="40" y="128" font-size="10.5" font-style="italic" fill="#627d98">the error: /etc/shadow was unreadable without root · the not applicables: no SSH server installed on this host</text>
+  <text x="40" y="150" font-size="12" font-weight="bold" fill="#486581">THE CONTROLS · 287 IN THE MODERATE BASELINE</text>
+  <g>
+    <rect x="40" y="164" width="150" height="62" rx="10" fill="#f0fff4" stroke="#2f855a" stroke-width="1.5"/>
+    <text x="115" y="194" font-size="24" font-weight="bold" fill="#2f855a" text-anchor="middle">5</text>
+    <text x="115" y="214" font-size="12" fill="#2f855a" text-anchor="middle">implemented</text>
+    <rect x="206" y="164" width="150" height="62" rx="10" fill="#fffaf0" stroke="#b7791f" stroke-width="1.5"/>
+    <text x="281" y="194" font-size="24" font-weight="bold" fill="#b7791f" text-anchor="middle">4</text>
+    <text x="281" y="214" font-size="12" fill="#b7791f" text-anchor="middle">partial</text>
+    <rect x="372" y="164" width="150" height="62" rx="10" fill="#fff5f5" stroke="#c53030" stroke-width="1.5"/>
+    <text x="447" y="194" font-size="24" font-weight="bold" fill="#c53030" text-anchor="middle">2</text>
+    <text x="447" y="214" font-size="12" fill="#c53030" text-anchor="middle">not implemented</text>
+    <rect x="538" y="164" width="150" height="62" rx="10" fill="#f7fafc" stroke="#718096" stroke-width="1.5"/>
+    <text x="613" y="194" font-size="24" font-weight="bold" fill="#718096" text-anchor="middle">276</text>
+    <text x="613" y="214" font-size="12" fill="#718096" text-anchor="middle">not assessed</text>
+  </g>
+  <rect x="40" y="258" width="648" height="44" rx="10" fill="#102a43"/>
+  <text x="364" y="285" font-size="13.5" fill="#ffffff" text-anchor="middle">11 of 287 controls technically assessable · <tspan font-weight="bold" fill="#fbd38d">45.5%</tspan> of those fully passing · <tspan font-weight="bold" fill="#fbd38d">6</tspan> POA&amp;M items open</text>
+</svg>

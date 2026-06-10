@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 260" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <rect width="720" height="260" fill="#ffffff"/>
+  <g fill="#486581" font-size="11" font-weight="bold">
+    <text x="50" y="34">INFORMATION TYPE</text>
+    <text x="370" y="34" text-anchor="middle">CONFIDENTIALITY</text>
+    <text x="490" y="34" text-anchor="middle">INTEGRITY</text>
+    <text x="610" y="34" text-anchor="middle">AVAILABILITY</text>
+  </g>
+  <line x1="40" y1="44" x2="680" y2="44" stroke="#bcccdc" stroke-width="1.5"/>
+  <g fill="#243b53" font-size="13">
+    <text x="50" y="72">Applicant PII</text>
+    <text x="50" y="108">Public web pages</text>
+    <text x="50" y="144">Staff credentials</text>
+  </g>
+  <g rx="6">
+    <rect x="325" y="56" width="90" height="24" rx="12" fill="#fbd38d"/>
+    <rect x="445" y="56" width="90" height="24" rx="12" fill="#fbd38d"/>
+    <rect x="565" y="56" width="90" height="24" rx="12" fill="#d9e2ec"/>
+    <rect x="325" y="92" width="90" height="24" rx="12" fill="#d9e2ec"/>
+    <rect x="445" y="92" width="90" height="24" rx="12" fill="#fbd38d"/>
+    <rect x="565" y="92" width="90" height="24" rx="12" fill="#d9e2ec"/>
+    <rect x="325" y="128" width="90" height="24" rx="12" fill="#fbd38d"/>
+    <rect x="445" y="128" width="90" height="24" rx="12" fill="#fbd38d"/>
+    <rect x="565" y="128" width="90" height="24" rx="12" fill="#d9e2ec"/>
+  </g>
+  <g font-size="11.5" font-weight="bold" text-anchor="middle">
+    <text x="370" y="72" fill="#7b341e">moderate</text>
+    <text x="490" y="72" fill="#7b341e">moderate</text>
+    <text x="610" y="72" fill="#486581">low</text>
+    <text x="370" y="108" fill="#486581">low</text>
+    <text x="490" y="108" fill="#7b341e">moderate</text>
+    <text x="610" y="108" fill="#486581">low</text>
+    <text x="370" y="144" fill="#7b341e">moderate</text>
+    <text x="490" y="144" fill="#7b341e">moderate</text>
+    <text x="610" y="144" fill="#486581">low</text>
+  </g>
+  <line x1="40" y1="166" x2="680" y2="166" stroke="#334e68" stroke-width="2"/>
+  <text x="50" y="192" font-size="13" font-weight="bold" fill="#102a43">High water mark</text>
+  <g font-size="11.5" font-weight="bold" text-anchor="middle">
+    <rect x="325" y="176" width="90" height="24" rx="12" fill="#fbd38d" stroke="#7b341e" stroke-width="1.5"/>
+    <rect x="445" y="176" width="90" height="24" rx="12" fill="#fbd38d" stroke="#7b341e" stroke-width="1.5"/>
+    <rect x="565" y="176" width="90" height="24" rx="12" fill="#d9e2ec" stroke="#486581" stroke-width="1.5"/>
+    <text x="370" y="192" fill="#7b341e">moderate</text>
+    <text x="490" y="192" fill="#7b341e">moderate</text>
+    <text x="610" y="192" fill="#486581">low</text>
+  </g>
+  <rect x="40" y="218" width="640" height="32" rx="8" fill="#102a43"/>
+  <text x="360" y="239" font-size="13" fill="#ffffff" text-anchor="middle">overall = max(moderate, moderate, low) = <tspan font-weight="bold" fill="#fbd38d">MODERATE</tspan> → SP 800-53B moderate baseline (287 controls)</text>
+</svg>
