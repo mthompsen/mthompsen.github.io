@@ -286,13 +286,13 @@
       "highlights": [
         "Full ptrace lifecycle: launch, attach, int3 breakpoints, single-step, register and memory read/write, detach.",
         "Capstone disassembly, ELF symbols with PIE load bias, frame-pointer backtraces, syscall tracing.",
-        "Full session runs clean under AddressSanitizer and UndefinedBehaviorSanitizer, with leak detection on."
+        "ASan and UBSan clean, with a browser GUI driven live by the debugger's JSON event stream."
       ],
       "details": [
         "Architecture: about 3,300 lines of C11. `include/lodestone.h` holds the central `debugger_t` state, `src/inferior.c` owns the ptrace lifecycle and stop classification, `src/repl.c` dispatches 17 commands, and each feature lives in its own module (`breakpoint.c`, `symbols.c`, `backtrace.c`, `syscall.c`, `capture.c`). Capstone is the only external dependency. ASLR is disabled in the child via `ADDR_NO_RANDOMIZE` for reproducible addresses.",
         "Breakpoints and stepping: `break <symbol>` or `break *<addr>` saves the original byte and writes `0xCC`. On SIGTRAP the debugger rewinds RIP by one and restores the byte; resuming single-steps the original instruction with `PTRACE_SINGLESTEP`, re-plants the int3, then continues. Disassembly reads through a breakpoint shadow so planted int3s never appear. Memory uses `process_vm_readv`, with a `/proc/<pid>/mem` fallback for writes to read-only text.",
         "Symbols, stack and syscalls: ELF `.symtab` and `.dynsym` are parsed directly, with no libelf. PIE load bias comes from `AT_ENTRY` in `/proc/<pid>/auxv`. `backtrace` walks the saved `rbp` chain with prologue sniffing. Syscall tracing uses `PTRACE_SYSCALL` with `PTRACE_O_TRACESYSGOOD` and `PTRACE_GET_SYSCALL_INFO`, and named catchpoints stop the target. Attach uses `PTRACE_SEIZE`; `detach` releases the process without killing it.",
-        "Testing: each milestone has a bash `gate.sh` with assertions, and a milestone is committed only when its gate passes. The `m12` gate rebuilds with `-fsanitize=address,undefined` and runs a full session with zero reports. A JSON event mode emits one event per line for tooling.",
+        "Interfaces: a command-line REPL, a JSON event mode that emits one event object per line, and a browser GUI. `gui/server.js` bridges the event stream to the browser over Server-Sent Events, so the GUI shows the same stops, registers, disassembly and syscalls as the terminal. Testing: each milestone has a bash `gate.sh` with assertions, and a milestone is committed only when its gate passes. The `m12` gate rebuilds with `-fsanitize=address,undefined` and runs a full session with zero reports. The GUI has its own milestone gates, which drive headless Chromium through Playwright.",
         "Limits, by design: single-threaded x86-64 Linux targets only. No threads, no hardware watchpoints, no DWARF line or variable info (symbol level only), no remote protocol, and no source-level step over, only `stepi`. Attaching to a process that isn't a child needs `ptrace_scope=0` or `CAP_SYS_PTRACE`."
       ],
       "tags": [
@@ -304,7 +304,9 @@
         "Capstone",
         "Debugger internals",
         "Syscall tracing",
-        "AddressSanitizer"
+        "AddressSanitizer",
+        "Node.js",
+        "Playwright"
       ],
       "cardTags": [
         "C",
@@ -316,6 +318,16 @@
       ],
       "links": [],
       "screenshots": [
+        {
+          "src": "assets/screenshots/lodestone-gui.png",
+          "alt": "Lodestone browser GUI stopped at a breakpoint in level_c of the nested test program: breakpoint and symbol tables, disassembly with the current instruction marked, all 18 registers with 17 changed since the last stop, a seven-frame backtrace, and a console showing the raw JSON event stream.",
+          "caption": "Browser GUI stopped at the level_c breakpoint, fed live by the debugger's JSON events."
+        },
+        {
+          "src": "assets/screenshots/lodestone-gui-syscalls.png",
+          "alt": "Lodestone Syscalls view after the target ran to exit: 5 syscalls observed from 9 entry and exit events, brk most frequent, no errors, and a trace grid of fstat, brk, write and exit_group with arguments and return values.",
+          "caption": "Syscall trace from the same session: every entry and exit with arguments and return values."
+        },
         {
           "src": "assets/screenshots/lodestone-session.png",
           "alt": "Lodestone terminal session on a test program: a breakpoint on level_c is hit, then disassembly, a seven-frame backtrace through level_b, level_a and main, two single instruction steps, the breakpoint table, and a catchpoint stopping on the write syscall at entry and exit before the target exits with code 0.",
