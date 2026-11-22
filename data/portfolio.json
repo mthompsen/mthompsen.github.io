@@ -69,7 +69,13 @@
           "alt": "Bastion HTML detection report: 6 events scanned, 2480 rules loaded, 3 detections, 314 of 706 techniques covered, with 210 writable gaps, 4 telemetry gaps and 178 out-of-scope techniques, and a caveat noting 1 unsupported rule.",
           "caption": "HTML dashboard from a Sysmon capture, with blind spots and caveats reported alongside detections."
         }
-      ]
+      ],
+      "diagram": {
+        "src": "assets/diagrams/bastion-architecture.png",
+        "alt": "Architecture diagram of Bastion. How a log file and the pinned SigmaHQ ruleset become detections, ATT&CK mappings, a coverage map with blind spots, and five output formats.",
+        "caption": "How a log file and the pinned SigmaHQ ruleset become detections, ATT&CK mappings, a coverage map with blind spots, and five output formats."
+      },
+      "video": null
     },
     {
       "id": "castellan",
@@ -123,7 +129,13 @@
           "alt": "Castellan compliance report against an SP 800-53B moderate baseline: 5 implemented, 4 partial, 2 not implemented, 276 not assessed; 11 of 287 controls technically assessable.",
           "caption": "Control-by-control report. Controls with no mapped check are reported as not assessed."
         }
-      ]
+      ],
+      "diagram": {
+        "src": "assets/diagrams/castellan-architecture.png",
+        "alt": "Architecture diagram of Castellan. How a system description and a read-only host scan become a FIPS-199 categorization, a baseline, an SSP, and control-by-control evidence.",
+        "caption": "How a system description and a read-only host scan become a FIPS-199 categorization, a baseline, an SSP, and control-by-control evidence."
+      },
+      "video": null
     },
     {
       "id": "scriptorium",
@@ -192,7 +204,13 @@
           "alt": "Scriptorium chat answering a paid time off question with an agent tool call, an answer citing a document chunk, and the cited source excerpt.",
           "caption": "Agent answer with tool activity and a validated citation."
         }
-      ]
+      ],
+      "diagram": {
+        "src": "assets/diagrams/scriptorium-architecture.png",
+        "alt": "Architecture diagram of Scriptorium. How the BFF routes requests to ingestion, retrieval and the agent, and where each service reads and writes.",
+        "caption": "How the BFF routes requests to ingestion, retrieval and the agent, and where each service reads and writes."
+      },
+      "video": null
     },
     {
       "id": "watchtower",
@@ -265,7 +283,13 @@
           "alt": "Watchtower Incident Workspace showing an incident with its NIST SP 800-61 phase stepper, linked alerts and notes.",
           "caption": "Incident Workspace with the phase stepper."
         }
-      ]
+      ],
+      "diagram": {
+        "src": "assets/diagrams/watchtower-architecture.png",
+        "alt": "Architecture diagram of Watchtower. How every data change reaches the hash-chained audit log, and how two independent verifiers check it.",
+        "caption": "How every data change reaches the hash-chained audit log, and how two independent verifiers check it."
+      },
+      "video": null
     },
     {
       "id": "lodestone",
@@ -333,7 +357,13 @@
           "alt": "Lodestone terminal session on a test program: a breakpoint on level_c is hit, then disassembly, a seven-frame backtrace through level_b, level_a and main, two single instruction steps, the breakpoint table, and a catchpoint stopping on the write syscall at entry and exit before the target exits with code 0.",
           "caption": "Real session against the nested test program. Most register lines and a second disassembly are trimmed for length; nothing else is changed."
         }
-      ]
+      ],
+      "diagram": {
+        "src": "assets/diagrams/lodestone-architecture.png",
+        "alt": "Architecture diagram of Lodestone. How REPL commands drive the target through ptrace, and how each stop also reaches the browser GUI.",
+        "caption": "How REPL commands drive the target through ptrace, and how each stop also reaches the browser GUI."
+      },
+      "video": null
     },
     {
       "id": "rampart",
@@ -400,7 +430,13 @@
           "alt": "Rampart's offline HTML report: pass rate before and after, pass and fail by severity, the table of 241 changed rules, the 24 still failing rules with their written justifications, NIST SP 800-53 coverage by control family, and evidence checks.",
           "caption": "Generated report: every changed rule, every remaining failure with its reason, and 800-53 coverage."
         }
-      ]
+      ],
+      "diagram": {
+        "src": "assets/diagrams/rampart-architecture.png",
+        "alt": "Architecture diagram of Rampart. The scan, harden and re-scan pipeline, and the STIG to CCI to 800-53 mapping behind the OSCAL export.",
+        "caption": "The scan, harden and re-scan pipeline, and the STIG to CCI to 800-53 mapping behind the OSCAL export."
+      },
+      "video": null
     }
   ],
   "more": [

@@ -355,6 +355,20 @@
         <h2 id="panel-title" style="font-size: 34px; margin: 0;">{{ active.name }}</h2>
         <p style="margin: 0; font-size: 17px; line-height: 1.55; text-wrap: pretty;">{{ active.pitch }}</p>
         <sc-if value="{{ active.hasContext }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; color: var(--color-neutral-300);">{{ active.context }}</p></sc-if>
+        <sc-if value="{{ active.hasVideo }}" hint-placeholder-val="{{ false }}">
+          <figure style="margin: 0; display: grid; gap: 8px;">
+            <video src="{{ active.video.src }}" poster="{{ active.video.poster }}" controls="" preload="none" playsinline="" aria-label="{{ active.video.alt }}" style="display: block; width: 100%; height: auto; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); background: var(--color-bg);"></video>
+            <figcaption style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.5; color: var(--color-neutral-300); text-wrap: pretty;">Demo · {{ active.video.caption }}</figcaption>
+          </figure>
+        </sc-if>
+        <sc-if value="{{ active.hasDiagram }}" hint-placeholder-val="{{ true }}">
+          <figure style="margin: 0; display: grid; gap: 8px;">
+            <a href="{{ active.diagram.src }}" target="_blank" rel="noopener" style="display: block; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm);" style-hover="box-shadow: var(--shadow-md);">
+              <img src="{{ active.diagram.src }}" alt="{{ active.diagram.alt }}" loading="lazy" style="display: block; width: 100%; height: auto;">
+            </a>
+            <figcaption style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.5; color: var(--color-neutral-300); text-wrap: pretty;">Architecture · {{ active.diagram.caption }}</figcaption>
+          </figure>
+        </sc-if>
         <sc-for list="{{ active.screenshots }}" as="sh" hint-placeholder-count="1">
           <figure style="margin: 0; display: grid; gap: 8px;">
             <a href="{{ sh.src }}" target="_blank" rel="noopener" style="display: block; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm);" style-hover="box-shadow: var(--shadow-md);">
@@ -510,6 +524,8 @@ class Component extends DCLogic {
       hasContext: !!p.context,
       cardTags: p.cardTags || p.tags,
       screenshots: p.screenshots || [],
+      hasVideo: !!(p.video && p.video.src),
+      hasDiagram: !!(p.diagram && p.diagram.src),
       open: () => this.openProject(p.id)
     }));
     const a = featured.find(p => p.id === this.state.activeId);
