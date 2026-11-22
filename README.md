@@ -34,3 +34,11 @@ bundle exec jekyll serve --unpublished --livereload
 
 Open http://127.0.0.1:4000 — `--unpublished` also renders drafts that still
 have `published: false`, and `--livereload` refreshes the browser on save.
+
+## Layout
+
+- `/` is the portfolio page: `index.html` plus `data/portfolio.json` (all content), `assets/screenshots/`,
+  `ds/` (Nocturne styles), `support.js` and `vendor/` (React and Phosphor icons, served locally, no CDN).
+  These files have no front matter, so Jekyll copies them unchanged.
+- `/blog/` is the Jekyll blog (minima theme). Posts live at `/blog/YYYY/MM/DD/title.html`; older post URLs
+  redirect there through `jekyll-redirect-from`. The feed stays at `/feed.xml`.

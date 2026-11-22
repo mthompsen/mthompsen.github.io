@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+  // Serve React from this site instead of a third-party CDN.
+  window.__resources = {
+    "https://unpkg.com/react@18.3.1/umd/react.production.min.js": "vendor/react.production.min.js",
+    "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js": "vendor/react-dom.production.min.js"
+  };
+</script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Mason Thompsen · Security engineering</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mason Thompsen: security engineering student building detection, compliance, and AI-platform tooling. St. Mary's University, San Antonio, TX.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mason Thompsen · Security engineering">
+  <meta property="og:description" content="Security engineering student building detection, compliance, and AI-platform tooling.">
+  <meta property="og:url" content="https://mthompsen.github.io/">
+  <meta property="og:image" content="https://mthompsen.github.io/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23161826'/%3E%3Cpath d='M7 27V8h4v3h3.5V8h3v3H21V8h4v19h-6.5v-5a2.5 2.5 0 0 0-5 0v5z' fill='%239184d9'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="ds/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="vendor/phosphor/style.css">
+  <script src="ds/bundle.js"></script>
+  <style>
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+    body { margin: 0; background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+    a { color: var(--color-accent-300); }
+    a:hover { color: var(--color-accent-200); }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</helmet>
+
+<div style="min-height: 100vh; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body);">
+
+  <a href="#main" style="position: absolute; left: -9999px; top: 8px; z-index: 50; padding: 8px 12px; border-radius: var(--radius-md); background: var(--color-surface); color: var(--color-text);" style-focus="left: 16px;">Skip to content</a>
+
+  <header style="position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--color-bg) 86%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">
+    <nav class="nav" aria-label="Primary" style="max-width: 1120px; margin: 0 auto; padding: 12px clamp(20px, 5vw, 56px); flex-wrap: wrap; row-gap: 6px;">
+      <a href="#top" class="nav-brand" style="display: flex; align-items: center; gap: 10px; font-size: 15px;">
+        <svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true"><path d="M7 27V8h4v3h3.5V8h3v3H21V8h4v19h-6.5v-5a2.5 2.5 0 0 0-5 0v5z" fill="var(--color-accent)"></path></svg>
+        <span>Mason Thompsen</span>
+      </a>
+      <div style="display: flex; align-items: center; gap: 18px; flex-wrap: wrap;">
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#writing">Writing</a>
+        <a href="#contact">Contact</a>
+        <button type="button" class="btn btn-secondary btn-icon" aria-label="{{ themeLabel }}" title="{{ themeLabel }}" onClick="{{ toggleTheme }}" style="width: 34px; height: 34px;"><i class="ph {{ themeIcon }}" aria-hidden="true" style="font-size: 17px;"></i></button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section id="top" aria-labelledby="hero-name" style="background: radial-gradient(ellipse 70% 90% at 0% 0%, color-mix(in srgb, var(--color-accent) 13%, transparent), transparent 70%);">
+      <div style="max-width: 1120px; margin: 0 auto; padding: clamp(56px, 10vw, 120px) clamp(20px, 5vw, 56px) clamp(48px, 8vw, 96px);">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px; color: var(--color-accent);">
+          <svg width="34" height="8" viewBox="0 0 34 8" aria-hidden="true"><path d="M0 8V0h6v3h8V0h6v3h8V0h6v8z" fill="currentColor"></path></svg>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-300);">San Antonio, Texas</span>
+        </div>
+        <h1 id="hero-name" style="font-size: clamp(42px, 7.5vw, 80px); line-height: 1; letter-spacing: -0.035em; margin: 0 0 22px;">{{ person.name }}</h1>
+        <p style="font-size: clamp(19px, 2.4vw, 26px); line-height: 1.3; letter-spacing: -0.01em; max-width: 22em; margin: 0 0 14px; text-wrap: pretty;">{{ person.headline }}</p>
+        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 13.5px; line-height: 1.5; color: var(--color-accent-300); max-width: 46em; margin: 0 0 18px; display: flex; gap: 8px; align-items: baseline;"><span aria-hidden="true" style="color: var(--color-accent);">&gt;</span><a href="#card-bastion" style="color: inherit; text-decoration: none; text-wrap: pretty;" style-hover="text-decoration: underline;">{{ person.proof }}</a></p>
+        <p style="font-size: 15px; color: var(--color-neutral-300); max-width: 38em; margin: 0 0 8px; text-wrap: pretty;">{{ person.subline }}</p>
+        <p style="font-size: 15px; color: var(--color-text); max-width: 38em; margin: 0 0 32px; text-wrap: pretty;">{{ person.seeking }}</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+          <a class="btn btn-primary" href="{{ links.resume }}" download="" style="min-height: 40px; white-space: nowrap; flex: none;"><i class="ph ph-file-arrow-down" aria-hidden="true"></i>Resume PDF</a>
+          <a class="btn btn-secondary" href="{{ links.github }}" style="min-height: 40px; white-space: nowrap; flex: none;"><i class="ph ph-github-logo" aria-hidden="true"></i>GitHub</a>
+          <a class="btn btn-secondary" href="{{ links.linkedin }}" style="min-height: 40px; white-space: nowrap; flex: none;"><i class="ph ph-linkedin-logo" aria-hidden="true"></i>LinkedIn</a>
+          <a class="btn btn-secondary" href="{{ links.blog }}" style="min-height: 40px; white-space: nowrap; flex: none;"><i class="ph ph-article" aria-hidden="true"></i>Blog</a>
+          <a class="btn btn-secondary" href="{{ links.email }}" style="min-height: 40px; white-space: nowrap; flex: none;"><i class="ph ph-envelope-simple" aria-hidden="true"></i>Email</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-h" style="max-width: 1120px; margin: 0 auto; padding: 56px clamp(20px, 5vw, 56px);">
+      <div style="display: flex; flex-wrap: wrap; gap: 24px 48px;">
+        <div style="flex: 1 1 200px; min-width: 0;">
+          <div style="display: flex; align-items: center; gap: 10px; color: var(--color-accent); margin-bottom: 10px;"><svg width="34" height="8" viewBox="0 0 34 8" aria-hidden="true"><path d="M0 8V0h6v3h8V0h6v3h8V0h6v8z" fill="currentColor"></path></svg><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--color-neutral-300);">01</span></div>
+          <h2 id="about-h" style="font-size: 26px;">About</h2>
+        </div>
+        <div style="flex: 999 1 520px; min-width: 0; max-width: 680px; font-size: 17px; line-height: 1.65;">
+          <p style="margin: 0; text-wrap: pretty;"><sc-for list="{{ person.about }}" as="s" hint-placeholder-count="4"><span>{{ s }} </span></sc-for></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-h" style="max-width: 1120px; margin: 0 auto; padding: 56px clamp(20px, 5vw, 56px);">
+      <div style="display: flex; align-items: center; gap: 10px; color: var(--color-accent); margin-bottom: 10px;"><svg width="34" height="8" viewBox="0 0 34 8" aria-hidden="true"><path d="M0 8V0h6v3h8V0h6v3h8V0h6v8z" fill="currentColor"></path></svg><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--color-neutral-300);">02</span></div>
+      <h2 id="projects-h" style="font-size: 26px; margin-bottom: 28px;">Featured projects</h2>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); gap: 18px;">
+        <sc-for list="{{ featured }}" as="p" hint-placeholder-count="3">
+          <article id="{{ p.anchor }}" class="card elev-sm" style="padding: 24px; gap: 14px; min-height: 360px;">
+            <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
+              <h3 style="font-size: 23px; margin: 0;">{{ p.name }}</h3>
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--color-neutral-300);">{{ p.meta }}</span>
+            </div>
+            <p style="margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--color-neutral-200); text-wrap: pretty;">{{ p.pitch }}</p>
+            <sc-if value="{{ p.hasContext }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--color-neutral-300);">{{ p.context }}</p></sc-if>
+            <dl style="margin: 0; padding: 10px 12px; border-radius: var(--radius-md); background: var(--color-bg); box-shadow: inset 0 0 0 1px var(--color-divider); font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; display: grid; gap: 4px;">
+              <sc-for list="{{ p.readout }}" as="r" hint-placeholder-count="2">
+                <div style="display: flex; justify-content: space-between; gap: 12px;"><dt style="color: var(--color-neutral-300);">{{ r.k }}</dt><dd style="margin: 0; color: var(--color-accent-300);">{{ r.v }}</dd></div>
+              </sc-for>
+            </dl>
+            <ul style="margin: 0; padding: 0 0 0 18px; display: grid; gap: 6px; font-size: 13.5px; line-height: 1.5; color: var(--color-neutral-200); flex: 1;">
+              <sc-for list="{{ p.highlights }}" as="h" hint-placeholder-count="3"><li style="text-wrap: pretty;">{{ h }}</li></sc-for>
+            </ul>
+            <ul aria-label="Technologies" style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px;">
+              <sc-for list="{{ p.cardTags }}" as="t" hint-placeholder-count="5"><li class="tag tag-neutral" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 2px 8px;">{{ t }}</li></sc-for>
+            </ul>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px;">
+              <button type="button" class="btn btn-primary" onClick="{{ p.open }}" aria-haspopup="dialog" style="min-height: 38px;">Read more<i class="ph ph-arrow-right" aria-hidden="true"></i></button>
+              <sc-if value="{{ p.hasGithub }}" hint-placeholder-val="{{ true }}"><a class="btn btn-secondary" href="{{ p.github }}" style="min-height: 38px;"><i class="ph ph-github-logo" aria-hidden="true"></i>GitHub<span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);"> repository for {{ p.name }}</span></a></sc-if>
+              <sc-if value="{{ p.repoPrivate }}" hint-placeholder-val="{{ false }}"><span style="align-self: center; display: inline-flex; align-items: center; gap: 6px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--color-neutral-300);"><i class="ph ph-lock-simple" aria-hidden="true"></i>Repo private</span></sc-if>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 24px 48px; margin-top: 56px;">
+        <div style="flex: 1 1 200px; min-width: 0;">
+          <h3 style="font-size: 19px;">More projects</h3>
+        </div>
+        <div style="flex: 999 1 520px; min-width: 0; max-width: 720px;">
+          <ul style="list-style: none; margin: 0; padding: 0; display: grid; gap: 22px;">
+            <sc-for list="{{ more }}" as="m" hint-placeholder-count="2">
+              <li style="display: grid; gap: 6px;">
+                <div style="display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;">
+                  <h4 style="font-size: 17px; margin: 0;">{{ m.name }}</h4>
+                  <sc-for list="{{ m.links }}" as="l" hint-placeholder-count="1"><a href="{{ l.href }}" style="font-family: 'IBM Plex Mono', monospace; font-size: 12.5px;">{{ l.label }} ↗</a></sc-for>
+                </div>
+                <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--color-neutral-200); text-wrap: pretty;">{{ m.description }}</p>
+              </li>
+            </sc-for>
+          </ul>
+
+          <sc-if value="{{ showInProgress }}" hint-placeholder-val="{{ true }}">
+            <div style="margin-top: 40px;">
+              <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 14px;">
+                <h4 style="font-size: 13px; margin: 0; font-family: 'IBM Plex Mono', monospace; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-300);">In progress</h4>
+                <sc-if value="{{ showConfirm }}" hint-placeholder-val="{{ true }}">
+                  <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 1px 7px; border: 1px dashed var(--color-accent); border-radius: var(--radius-sm); color: var(--color-accent-300);">CONFIRM: {{ inProgressNote }}</span>
+                </sc-if>
+              </div>
+              <ul style="list-style: none; margin: 0; padding: 0; display: grid; gap: 12px;">
+                <sc-for list="{{ inProgress }}" as="w" hint-placeholder-count="4">
+                  <li style="display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 14px; line-height: 1.55;">
+                    <span style="flex: 0 0 170px; font-weight: 500;">{{ w.name }}</span>
+                    <span style="flex: 1 1 280px; min-width: 0; color: var(--color-neutral-200); text-wrap: pretty;">{{ w.description }}<sc-if value="{{ w.showConfirm }}" hint-placeholder-val="{{ false }}"> <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 0 6px; border: 1px dashed var(--color-accent); border-radius: var(--radius-sm); color: var(--color-accent-300); white-space: nowrap;">CONFIRM: {{ w.confirm }}</span></sc-if></span>
+                  </li>
+                </sc-for>
+              </ul>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" aria-labelledby="exp-h" style="max-width: 1120px; margin: 0 auto; padding: 56px clamp(20px, 5vw, 56px);">
+      <div style="display: flex; flex-wrap: wrap; gap: 24px 48px;">
+        <div style="flex: 1 1 200px; min-width: 0;">
+          <div style="display: flex; align-items: center; gap: 10px; color: var(--color-accent); margin-bottom: 10px;"><svg width="34" height="8" viewBox="0 0 34 8" aria-hidden="true"><path d="M0 8V0h6v3h8V0h6v3h8V0h6v8z" fill="currentColor"></path></svg><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--color-neutral-300);">03</span></div>
+          <h2 id="exp-h" style="font-size: 26px;">Experience</h2>
+        </div>
+        <div style="flex: 999 1 520px; min-width: 0; max-width: 720px;">
+          <ol style="list-style: none; margin: 0; padding: 0 0 0 22px; display: grid; gap: 36px; background: linear-gradient(to bottom, var(--color-divider), var(--color-divider) calc(100% - 48px), transparent) no-repeat 3px 8px / 1px 100%;">
+            <sc-for list="{{ experience }}" as="e" hint-placeholder-count="4">
+              <li style="position: relative; display: grid; gap: 6px;">
+                <span aria-hidden="true" style="position: absolute; left: -22px; top: 7px; width: 7px; height: 7px; border-radius: 1px; background: var(--color-accent);"></span>
+                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; color: var(--color-neutral-300); display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center;">
+                  <span>{{ e.dates }}</span><span aria-hidden="true">·</span><span>{{ e.location }}</span>
+                </div>
+                <h3 style="font-size: 18px; margin: 0; line-height: 1.3;">{{ e.role }}<span style="color: var(--color-neutral-300);">, {{ e.org }}</span></h3>
+                <sc-if value="{{ e.showConfirm }}" hint-placeholder-val="{{ false }}">
+                  <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; padding: 4px 8px; border: 1px dashed var(--color-accent); border-radius: var(--radius-sm); color: var(--color-accent-300); justify-self: start;">CONFIRM dates: {{ e.confirm }}</p>
+                </sc-if>
+                <ul style="margin: 4px 0 0; padding: 0 0 0 18px; display: grid; gap: 6px; font-size: 14.5px; line-height: 1.6; color: var(--color-neutral-200);">
+                  <sc-for list="{{ e.bullets }}" as="b" hint-placeholder-count="2"><li style="text-wrap: pretty;">{{ b }}</li></sc-for>
+                </ul>
+              </li>
+            </sc-for>
+          </ol>
+          <sc-if value="{{ showOther }}" hint-placeholder-val="{{ true }}">
+            <details style="margin-top: 28px; font-size: 14px;">
+              <summary style="cursor: pointer; color: var(--color-neutral-300); font-family: 'IBM Plex Mono', monospace; font-size: 12.5px;">Other work</summary>
+              <p style="margin: 10px 0 0; color: var(--color-neutral-200);">{{ otherWork.text }}<sc-if value="{{ showConfirm }}" hint-placeholder-val="{{ true }}"> <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 0 6px; border: 1px dashed var(--color-accent); border-radius: var(--radius-sm); color: var(--color-accent-300);">CONFIRM: {{ otherWork.confirm }}</span></sc-if></p>
+            </details>
+          </sc-if>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" aria-labelledby="edu-h" style="max-width: 1120px; margin: 0 auto; padding: 56px clamp(20px, 5vw, 56px);">
+      <div style="display: flex; flex-wrap: wrap; gap: 24px 48px;">
+        <div style="flex: 1 1 200px; min-width: 0;">
+          <div style="display: flex; align-items: center; gap: 10px; color: var(--color-accent); margin-bottom: 10px;"><svg width="34" height="8" viewBox="0 0 34 8" aria-hidden="true"><path d="M0 8V0h6v3h8V0h6v3h8V0h6v8z" fill="currentColor"></path></svg><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--color-neutral-300);">04</span></div>
+          <h2 id="edu-h" style="font-size: 26px;">Education</h2>
+        </div>
+        <div style="flex: 999 1 520px; min-width: 0; max-width: 720px; display: grid; gap: 32px;">
+          <sc-for list="{{ education }}" as="ed" hint-placeholder-count="2">
+            <div style="display: grid; gap: 6px;">
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; color: var(--color-neutral-300); display: flex; flex-wrap: wrap; gap: 6px 10px;"><span>{{ ed.dates }}</span><span aria-hidden="true">·</span><span>{{ ed.location }}</span></div>
+              <h3 style="font-size: 18px; margin: 0;">{{ ed.school }}</h3>
+              <p style="margin: 0; font-size: 14.5px; color: var(--color-neutral-200);">{{ ed.degree }}</p>
+              <sc-if value="{{ ed.showConfirm }}" hint-placeholder-val="{{ false }}">
+                <p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; padding: 4px 8px; border: 1px dashed var(--color-accent); border-radius: var(--radius-sm); color: var(--color-accent-300); justify-self: start;">CONFIRM date: {{ ed.confirm }}</p>
+              </sc-if>
+              <sc-if value="{{ ed.hasFacts }}" hint-placeholder-val="{{ false }}">
+                <ul style="list-style: none; margin: 6px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px;">
+                  <sc-for list="{{ ed.facts }}" as="f" hint-placeholder-count="3"><li class="tag tag-accent">{{ f }}</li></sc-for>
+                </ul>
+              </sc-if>
+              <sc-if value="{{ ed.hasCoursework }}" hint-placeholder-val="{{ false }}">
+                <p style="margin: 8px 0 0; font-size: 14px; line-height: 1.6; color: var(--color-neutral-300);"><span style="color: var(--color-text);">Relevant coursework: </span>{{ ed.courseText }}</p>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-h" style="max-width: 1120px; margin: 0 auto; padding: 56px clamp(20px, 5vw, 56px);">
+      <div style="display: flex; flex-wrap: wrap; gap: 24px 48px;">
+        <div style="flex: 1 1 200px; min-width: 0;">
+          <div style="display: flex; align-items: center; gap: 10px; color: var(--color-accent); margin-bottom: 10px;"><svg width="34" height="8" viewBox="0 0 34 8" aria-hidden="true"><path d="M0 8V0h6v3h8V0h6v3h8V0h6v8z" fill="currentColor"></path></svg><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--color-neutral-300);">05</span></div>
+          <h2 id="skills-h" style="font-size: 26px;">Skills</h2>
+        </div>
+        <div style="flex: 999 1 520px; min-width: 0; max-width: 760px; display: grid; gap: 22px;">
+          <sc-for list="{{ skills }}" as="g" hint-placeholder-count="5">
+            <div style="display: flex; flex-wrap: wrap; gap: 8px 20px;">
+              <h3 style="flex: 0 0 190px; font-size: 14px; margin: 3px 0 0; color: var(--color-neutral-300);">{{ g.group }}</h3>
+              <ul style="flex: 1 1 320px; min-width: 0; list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px;">
+                <sc-for list="{{ g.items }}" as="s" hint-placeholder-count="6"><li class="tag tag-neutral" style="font-size: 12.5px; padding: 3px 10px;">{{ s }}</li></sc-for>
+              </ul>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications" aria-labelledby="cert-h" style="max-width: 1120px; margin: 0 auto; padding: 56px clamp(20px, 5vw, 56px);">
+      <div style="display: flex; flex-wrap: wrap; gap: 24px 48px;">
+        <div style="flex: 1 1 200px; min-width: 0;">
+          <div style="display: flex; align-items: center; gap: 10px; color: var(--color-accent); margin-bottom: 10px;"><svg width="34" height="8" viewBox="0 0 34 8" aria-hidden="true"><path d="M0 8V0h6v3h8V0h6v3h8V0h6v8z" fill="currentColor"></path></svg><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--color-neutral-300);">06</span></div>
+          <h2 id="cert-h" style="font-size: 26px;">Certifications</h2>
+        </div>
+        <ul style="flex: 999 1 520px; min-width: 0; max-width: 720px; list-style: none; margin: 0; padding: 0; display: grid; gap: 14px;">
+          <sc-for list="{{ certifications }}" as="c" hint-placeholder-count="2">
+            <li style="display: flex; flex-wrap: wrap; gap: 4px 20px; align-items: baseline;">
+              <span style="flex: 0 0 260px; font-size: 16px;">{{ c.name }}</span>
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; color: var(--color-neutral-300);">{{ c.status }}</span>
+            </li>
+          </sc-for>
+        </ul>
+      </div>
+    </section>
+
+    <section id="writing" aria-labelledby="writing-h" style="max-width: 1120px; margin: 0 auto; padding: 56px clamp(20px, 5vw, 56px);">
+      <div style="display: flex; flex-wrap: wrap; gap: 24px 48px;">
+        <div style="flex: 1 1 200px; min-width: 0;">
+          <div style="display: flex; align-items: center; gap: 10px; color: var(--color-accent); margin-bottom: 10px;"><svg width="34" height="8" viewBox="0 0 34 8" aria-hidden="true"><path d="M0 8V0h6v3h8V0h6v3h8V0h6v8z" fill="currentColor"></path></svg><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--color-neutral-300);">07</span></div>
+          <h2 id="writing-h" style="font-size: 26px;">Writing</h2>
+        </div>
+        <div style="flex: 999 1 520px; min-width: 0; max-width: 720px; display: grid; gap: 26px;">
+          <a href="{{ featuredPost.href }}" class="card elev-sm" style="padding: 22px 24px; gap: 8px; text-decoration: none; color: var(--color-text);" style-hover="box-shadow: var(--shadow-md);">
+            <span class="card-kicker" style="font-family: 'IBM Plex Mono', monospace; color: var(--color-accent-300);">Featured · {{ featuredPost.date }}</span>
+            <span style="font-size: 21px; line-height: 1.25; letter-spacing: -0.01em;">{{ featuredPost.title }}</span>
+            <span style="font-size: 14.5px; color: var(--color-neutral-200);">{{ featuredPost.summary }}</span>
+          </a>
+          <sc-if value="{{ hasPosts }}" hint-placeholder-val="{{ false }}">
+            <ul style="list-style: none; margin: 0; padding: 0; display: grid; gap: 12px;">
+              <sc-for list="{{ posts }}" as="po" hint-placeholder-count="3">
+                <li style="display: flex; flex-wrap: wrap; gap: 2px 18px; align-items: baseline;">
+                  <span style="flex: 0 0 120px; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; color: var(--color-neutral-300);">{{ po.date }}</span>
+                  <a href="{{ po.href }}" style="flex: 1 1 280px; font-size: 15px;">{{ po.title }}</a>
+                </li>
+              </sc-for>
+            </ul>
+          </sc-if>
+          <a href="{{ links.blog }}" style="font-family: 'IBM Plex Mono', monospace; font-size: 13px;">All posts at mthompsen.github.io ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="community" aria-labelledby="comm-h" style="max-width: 1120px; margin: 0 auto; padding: 56px clamp(20px, 5vw, 56px);">
+      <div style="display: flex; flex-wrap: wrap; gap: 24px 48px;">
+        <div style="flex: 1 1 200px; min-width: 0;">
+          <div style="display: flex; align-items: center; gap: 10px; color: var(--color-accent); margin-bottom: 10px;"><svg width="34" height="8" viewBox="0 0 34 8" aria-hidden="true"><path d="M0 8V0h6v3h8V0h6v3h8V0h6v8z" fill="currentColor"></path></svg><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--color-neutral-300);">08</span></div>
+          <h2 id="comm-h" style="font-size: 26px;">Community</h2>
+        </div>
+        <div style="flex: 999 1 520px; min-width: 0; max-width: 720px; font-size: 16px;">
+          <sc-for list="{{ community }}" as="cm" hint-placeholder-count="1"><p style="margin: 0;">{{ cm }}</p></sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-h" style="max-width: 1120px; margin: 0 auto; padding: 56px clamp(20px, 5vw, 56px) 96px;">
+      <div style="display: flex; flex-wrap: wrap; gap: 24px 48px;">
+        <div style="flex: 1 1 200px; min-width: 0;">
+          <div style="display: flex; align-items: center; gap: 10px; color: var(--color-accent); margin-bottom: 10px;"><svg width="34" height="8" viewBox="0 0 34 8" aria-hidden="true"><path d="M0 8V0h6v3h8V0h6v3h8V0h6v8z" fill="currentColor"></path></svg><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--color-neutral-300);">09</span></div>
+          <h2 id="contact-h" style="font-size: 26px;">Contact me</h2>
+        </div>
+        <div style="flex: 999 1 520px; min-width: 0; max-width: 720px; display: grid; gap: 22px;">
+          <p style="margin: 0; font-size: 17px; line-height: 1.6; text-wrap: pretty;">For internships, scholarships, research, or questions about a project, email is the fastest way to reach me.</p>
+          <div class="card elev-sm" style="padding: 20px 22px; display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 20px;">
+            <a href="{{ links.email }}" style="font-family: 'IBM Plex Mono', monospace; font-size: clamp(16px, 2.4vw, 21px); text-decoration: none; overflow-wrap: anywhere;">{{ links.emailText }}</a>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+              <button type="button" class="btn btn-secondary" onClick="{{ copyEmail }}" style="min-height: 40px; white-space: nowrap;"><i class="ph {{ copyIcon }}" aria-hidden="true"></i>{{ copyLabel }}</button>
+              <a class="btn btn-primary" href="{{ links.email }}" style="min-height: 40px; white-space: nowrap;"><i class="ph ph-envelope-simple" aria-hidden="true"></i>Send email</a>
+            </div>
+          </div>
+          <span role="status" aria-live="polite" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">{{ copyStatus }}</span>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 14px;">
+            <a href="{{ links.linkedin }}" style="display: flex; align-items: center; gap: 6px;"><i class="ph ph-linkedin-logo" aria-hidden="true"></i>LinkedIn</a>
+            <a href="{{ links.github }}" style="display: flex; align-items: center; gap: 6px;"><i class="ph ph-github-logo" aria-hidden="true"></i>GitHub</a>
+            <a href="{{ links.resume }}" download="" style="display: flex; align-items: center; gap: 6px;"><i class="ph ph-file-arrow-down" aria-hidden="true"></i>Resume PDF</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="background: linear-gradient(to right, transparent, var(--color-divider) 48px, var(--color-divider) calc(100% - 48px), transparent) no-repeat top / 100% 1px;">
+    <div style="max-width: 1120px; margin: 0 auto; padding: 32px clamp(20px, 5vw, 56px) 40px; display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; justify-content: space-between;">
+      <div style="display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 14px;">
+        <a href="{{ links.github }}">GitHub</a>
+        <a href="{{ links.linkedin }}">LinkedIn</a>
+        <a href="{{ links.blog }}">Blog</a>
+        <a href="{{ links.email }}">Email</a>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 6px 16px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--color-neutral-300);">
+        <span>Built by Mason Thompsen</span>
+        <span>Last updated {{ lastUpdated }}</span>
+      </div>
+    </div>
+  </footer>
+
+  <sc-if value="{{ panelOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeProject }}" style="position: fixed; inset: 0; z-index: 40; background: color-mix(in srgb, var(--color-neutral-900) 60%, transparent); display: flex; justify-content: flex-end;">
+      <div role="dialog" aria-modal="true" aria-labelledby="panel-title" tabIndex="-1" ref="{{ panelRef }}" onClick="{{ stop }}" style="width: min(680px, 100%); height: 100%; overflow-y: auto; background: var(--color-surface); box-shadow: var(--shadow-lg); padding: clamp(24px, 5vw, 44px); display: grid; align-content: start; gap: 20px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+          <div style="display: flex; align-items: center; gap: 10px; color: var(--color-accent);"><svg width="34" height="8" viewBox="0 0 34 8" aria-hidden="true"><path d="M0 8V0h6v3h8V0h6v3h8V0h6v8z" fill="currentColor"></path></svg><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--color-neutral-300);">{{ active.meta }}</span></div>
+          <button type="button" class="btn btn-secondary btn-icon" aria-label="Close project details" onClick="{{ closeProject }}"><i class="ph ph-x" aria-hidden="true" style="font-size: 17px;"></i></button>
+        </div>
+        <h2 id="panel-title" style="font-size: 34px; margin: 0;">{{ active.name }}</h2>
+        <p style="margin: 0; font-size: 17px; line-height: 1.55; text-wrap: pretty;">{{ active.pitch }}</p>
+        <sc-if value="{{ active.hasContext }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; color: var(--color-neutral-300);">{{ active.context }}</p></sc-if>
+        <sc-for list="{{ active.screenshots }}" as="sh" hint-placeholder-count="1">
+          <figure style="margin: 0; display: grid; gap: 8px;">
+            <a href="{{ sh.src }}" target="_blank" rel="noopener" style="display: block; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm);" style-hover="box-shadow: var(--shadow-md);">
+              <img src="{{ sh.src }}" alt="{{ sh.alt }}" loading="lazy" style="display: block; width: 100%; height: auto;">
+            </a>
+            <figcaption style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.5; color: var(--color-neutral-300); text-wrap: pretty;">{{ sh.caption }}</figcaption>
+          </figure>
+        </sc-for>
+        <dl style="margin: 0; padding: 12px 14px; border-radius: var(--radius-md); background: var(--color-bg); box-shadow: inset 0 0 0 1px var(--color-divider); font-family: 'IBM Plex Mono', monospace; font-size: 13px; display: grid; gap: 4px;">
+          <sc-for list="{{ active.readout }}" as="r" hint-placeholder-count="2">
+            <div style="display: flex; justify-content: space-between; gap: 12px;"><dt style="color: var(--color-neutral-300);">{{ r.k }}</dt><dd style="margin: 0; color: var(--color-accent-300);">{{ r.v }}</dd></div>
+          </sc-for>
+        </dl>
+        <ul style="margin: 0; padding: 0 0 0 18px; display: grid; gap: 12px; font-size: 15px; line-height: 1.65; color: var(--color-neutral-200);">
+          <sc-for list="{{ active.detailSegs }}" as="d" hint-placeholder-count="4">
+            <li style="text-wrap: pretty;"><sc-for list="{{ d }}" as="seg" hint-placeholder-count="1"><sc-if value="{{ seg.code }}" hint-placeholder-val="{{ false }}"><code style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; padding: 1px 5px; border-radius: var(--radius-sm); background: var(--color-neutral-800); color: var(--color-neutral-100);">{{ seg.text }}</code></sc-if><sc-if value="{{ seg.plain }}" hint-placeholder-val="{{ true }}"><span>{{ seg.text }}</span></sc-if></sc-for></li>
+          </sc-for>
+        </ul>
+        <ul aria-label="Technologies" style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px;">
+          <sc-for list="{{ active.tags }}" as="t" hint-placeholder-count="5"><li class="tag tag-neutral" style="font-family: 'IBM Plex Mono', monospace; font-size: 11.5px;">{{ t }}</li></sc-for>
+        </ul>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <sc-for list="{{ active.links }}" as="l" hint-placeholder-count="1">
+            <a class="btn btn-primary" href="{{ l.href }}" style="min-height: 40px;"><i class="ph {{ l.icon }}" aria-hidden="true"></i>{{ l.label }}</a>
+          </sc-for>
+          <sc-if value="{{ active.repoPrivate }}" hint-placeholder-val="{{ false }}"><span style="display: inline-flex; align-items: center; gap: 6px; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; color: var(--color-neutral-300);"><i class="ph ph-lock-simple" aria-hidden="true"></i>Repository is private for now</span></sc-if>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showConfirm&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Review&quot;},&quot;showInProgress&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;showOtherWork&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;}}">
+class Component extends DCLogic {
+  state = { data: null, theme: 'dark', activeId: null, posts: [] };
+  panelRef = React.createRef();
+  lastFocus = null;
+
+  componentDidMount() {
+    let t = null;
+    try { t = localStorage.getItem('mt-theme'); } catch (e) {}
+    if (!t) t = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    this.applyTheme(t);
+    this.setState({ theme: t });
+    fetch('data/portfolio.json').then(r => r.json()).then(data => {
+      this.setState({ data }, () => {
+        const m = location.hash.match(/^#project-([\w-]+)/);
+        if (m) this.openProject(m[1]);
+      });
+      if (data.writing && data.writing.feed) this.loadFeed(data.writing.feed, data.writing.featured);
+    }).catch(e => console.warn('Could not load data/portfolio.json', e));
+    this.onKey = e => {
+      if (!this.state.activeId) return;
+      if (e.key === 'Escape') this.closeProject();
+      const panel = this.panelRef.current || document.querySelector('[role=dialog]');
+      if (e.key === 'Tab' && panel) {
+        const f = panel.querySelectorAll('a[href], button');
+        if (!f.length) return;
+        const first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    };
+    window.addEventListener('keydown', this.onKey);
+  }
+  componentWillUnmount() { window.removeEventListener('keydown', this.onKey); document.body.style.overflow = ''; }
+  componentDidUpdate(pp, ps) {
+    if (this.state.activeId && !ps.activeId) {
+      setTimeout(() => {
+        const el = this.panelRef.current || document.querySelector('[role=dialog]');
+        if (el) el.focus();
+      }, 30);
+    }
+  }
+
+  loadFeed(url, featured) {
+    fetch(url).then(r => r.text()).then(txt => {
+      const doc = new DOMParser().parseFromString(txt, 'application/xml');
+      const entries = [...doc.querySelectorAll('entry, item')].slice(0, 6).map(en => {
+        const linkEl = en.querySelector('link');
+        const href = linkEl ? (linkEl.getAttribute('href') || linkEl.textContent) : '';
+        const raw = (en.querySelector('published, pubDate, updated') || {}).textContent || '';
+        const d = new Date(raw);
+        const date = isNaN(d) ? '' : d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+        return { title: (en.querySelector('title') || {}).textContent || '', href, date };
+      }).filter(p => p.title && (!featured || p.href.replace(/\/$/, '') !== featured.href.replace(/\/$/, ''))).slice(0, 4);
+      this.setState({ posts: entries });
+    }).catch(() => {});
+  }
+
+  applyTheme(t) {
+    const s = document.documentElement.style;
+    const L = {
+      '--color-bg': '#e4e7f5', '--color-surface': '#f3f5fe', '--color-text': '#292b31', '--color-accent': '#5d5294',
+      '--color-divider': 'color-mix(in srgb, #292b31 18%, transparent)',
+      '--color-neutral-100': '#292b31', '--color-neutral-200': '#292b31', '--color-neutral-300': '#3f424d', '--color-neutral-400': '#595d6c',
+      '--color-neutral-500': '#75798c', '--color-neutral-600': '#9397ab', '--color-neutral-700': '#b2b6ca', '--color-neutral-800': '#d6d9ea', '--color-neutral-900': '#cfd3e5',
+      '--color-accent-100': '#2b2741', '--color-accent-200': '#423a6a', '--color-accent-300': '#5d5294', '--color-accent-400': '#796cbf',
+      '--color-accent-500': '#968ae0', '--color-accent-600': '#b5abfc', '--color-accent-700': '#d2cefd', '--color-accent-800': '#e1defb', '--color-accent-900': '#f5f4ff',
+      '--shadow-sm': '0 0 0 1px #cfd3e5', '--shadow-md': '0 0 0 1px #b2b6ca, 0 6px 18px rgba(41,43,49,0.12)', '--shadow-lg': '0 0 0 1px #9397ab, 0 16px 40px rgba(41,43,49,0.2)'
+    };
+    Object.keys(L).forEach(k => t === 'light' ? s.setProperty(k, L[k]) : s.removeProperty(k));
+    s.colorScheme = t;
+  }
+
+  toggleTheme = () => {
+    const t = this.state.theme === 'dark' ? 'light' : 'dark';
+    this.applyTheme(t);
+    try { localStorage.setItem('mt-theme', t); } catch (e) {}
+    this.setState({ theme: t });
+  };
+
+  openProject = id => {
+    this.lastFocus = document.activeElement;
+    document.body.style.overflow = 'hidden';
+    history.replaceState(null, '', '#project-' + id);
+    this.setState({ activeId: id }, () => {
+      let n = 0;
+      const tryFocus = () => {
+        const el = this.panelRef.current || document.querySelector('[role=dialog]');
+        if (el) el.focus();
+        else if (n++ < 20) setTimeout(tryFocus, 25);
+      };
+      requestAnimationFrame(() => requestAnimationFrame(tryFocus));
+    });
+  };
+  closeProject = () => {
+    document.body.style.overflow = '';
+    history.replaceState(null, '', location.pathname + location.search + '#projects');
+    this.setState({ activeId: null }, () => { if (this.lastFocus && this.lastFocus.focus) this.lastFocus.focus(); });
+  };
+
+  copyEmail = () => {
+    const addr = ((this.state.data || {}).person || {}).links?.emailText || '';
+    const done = () => { this.setState({ copied: true }); clearTimeout(this.copyT); this.copyT = setTimeout(() => this.setState({ copied: false }), 2000); };
+    if (navigator.clipboard) navigator.clipboard.writeText(addr).then(done).catch(() => {});
+  };
+
+  segs(str) {
+    return String(str).split('`').map((text, i) => ({ text, code: i % 2 === 1, plain: i % 2 === 0 })).filter(s => s.text);
+  }
+
+  renderVals() {
+    const d = this.state.data || {};
+    const person = d.person || {};
+    const showConfirm = this.props.showConfirm ?? false;
+    const featured = (d.featured || []).map(p => ({
+      ...p,
+      anchor: 'card-' + p.id,
+      github: ((p.links || [])[0] || {}).href,
+      hasGithub: !!((p.links || [])[0] || {}).href,
+      repoPrivate: p.repoPrivate === true,
+      hasContext: !!p.context,
+      cardTags: p.cardTags || p.tags,
+      screenshots: p.screenshots || [],
+      open: () => this.openProject(p.id)
+    }));
+    const a = featured.find(p => p.id === this.state.activeId);
+    const active = a ? { ...a, detailSegs: (a.details || []).map(x => this.segs(x)) } : {};
+    const flag = x => ({ ...x, showConfirm: showConfirm && !!x.confirm });
+    return {
+      person,
+      links: person.links || {},
+      featured,
+      more: d.more || [],
+      inProgress: (d.inProgress || []).filter(w => w.show !== false).map(flag),
+      inProgressNote: d.inProgressNote,
+      showInProgress: (this.props.showInProgress ?? true) && (d.inProgress || []).length > 0,
+      experience: (d.experience || []).map(flag),
+      otherWork: d.otherWork || {},
+      showOther: (this.props.showOtherWork ?? true) && !!(d.otherWork && d.otherWork.show),
+      education: (d.education || []).map(e => ({ ...flag(e), hasFacts: (e.facts || []).length > 0, hasCoursework: (e.coursework || []).length > 0, courseText: (e.coursework || []).join(', ') + '.' })),
+      skills: d.skills || [],
+      certifications: d.certifications || [],
+      featuredPost: (d.writing && d.writing.featured) || {},
+      posts: this.state.posts,
+      hasPosts: this.state.posts.length > 0,
+      community: d.community || [],
+      lastUpdated: d.lastUpdated,
+      showConfirm,
+      themeIcon: this.state.theme === 'dark' ? 'ph-sun' : 'ph-moon',
+      themeLabel: this.state.theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode',
+      toggleTheme: this.toggleTheme,
+      panelOpen: !!a,
+      active,
+      panelRef: this.panelRef,
+      closeProject: this.closeProject,
+      stop: e => e.stopPropagation(),
+      copyEmail: this.copyEmail,
+      copyLabel: this.state.copied ? 'Copied' : 'Copy address',
+      copyIcon: this.state.copied ? 'ph-check' : 'ph-copy',
+      copyStatus: this.state.copied ? 'Email address copied' : ''
+    };
+  }
+}
+</script>
+</body>
+</html>

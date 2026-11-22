@@ -1,0 +1,598 @@
+{
+  "lastUpdated": "November 22, 2026",
+  "person": {
+    "name": "Mason Thompsen",
+    "headline": "Security engineering student building detection, compliance, and AI-platform tooling",
+    "subline": "B.S. Computer Science (Cybersecurity Track) and B.A. Theology, St. Mary's University, San Antonio, TX",
+    "about": [
+      "Transfer student at St. Mary's University pursuing a dual B.S. in Computer Science (Cybersecurity Track) and B.A. in Theology with a Mathematics minor.",
+      "Before college he worked professionally as a game programmer on shipped titles for studios in the US and Germany.",
+      "He now builds open-source security tools around MITRE ATT&CK, Sigma detection engineering, and the NIST Risk Management Framework, and is targeting federal cybersecurity career pipelines.",
+      "Based in San Antonio, Texas."
+    ],
+    "links": {
+      "github": "https://github.com/mthompsen",
+      "linkedin": "https://www.linkedin.com/in/mason-thompsen-259829219",
+      "blog": "https://mthompsen.github.io/blog/",
+      "email": "mailto:mthompsen1@gmail.com",
+      "emailText": "mthompsen1@gmail.com",
+      "resume": "resume.pdf"
+    },
+    "proof": "Bastion: 314 of 706 ATT&CK techniques covered, 392 blind spots disclosed.",
+    "seeking": "Seeking a Summer 2027 cybersecurity internship. U.S. citizen, willing to obtain a security clearance."
+  },
+  "featured": [
+    {
+      "id": "bastion",
+      "name": "Bastion",
+      "meta": "Python · MIT",
+      "pitch": "Command-line detection engine that evaluates Windows and Linux logs against the full public SigmaHQ ruleset and maps every hit to MITRE ATT&CK.",
+      "readout": [
+        {
+          "k": "rules evaluable",
+          "v": "2,479 / 2,480"
+        },
+        {
+          "k": "techniques covered",
+          "v": "314 / 706"
+        }
+      ],
+      "highlights": [
+        "Custom Sigma grammar evaluator; the 1 unsupported rule is disclosed in every report.",
+        "Blind spots split into out-of-scope, unread-telemetry, and writable gaps.",
+        "Terminal, JSON, SARIF, Markdown, and self-contained HTML dashboard output."
+      ],
+      "details": [
+        "Command-line detection engine: ingests Windows Sysmon/EVTX and Linux auth/syslog, evaluates them in-process against the full public SigmaHQ ruleset, maps every hit to MITRE ATT&CK.",
+        "Custom Sigma grammar evaluator (field modifiers, base64/windash/UTF-16 transforms, `N of` conditions); 2,479 of 2,480 pinned Windows rules evaluable, the 1 unsupported rule disclosed in every report.",
+        "Reports honest coverage: 314 of 706 enterprise techniques covered by the pinned ruleset, with blind spots split into out-of-scope, unread-telemetry, and writable gaps.",
+        "Outputs terminal table, JSON, SARIF, Markdown, and a self-contained HTML dashboard; ships a hand-written 8-rule local pack for techniques SigmaHQ misses; `bastion bench` measures real detection on labelled captures."
+      ],
+      "tags": [
+        "Python",
+        "Sigma",
+        "MITRE ATT&CK",
+        "EVTX",
+        "SARIF",
+        "detection engineering"
+      ],
+      "links": [
+        {
+          "label": "GitHub",
+          "href": "https://github.com/mthompsen/bastion",
+          "icon": "ph-github-logo"
+        }
+      ],
+      "screenshots": [
+        {
+          "src": "assets/screenshots/bastion-dashboard.png",
+          "alt": "Bastion HTML detection report: 6 events scanned, 2480 rules loaded, 3 detections, 314 of 706 techniques covered, with 210 writable gaps, 4 telemetry gaps and 178 out-of-scope techniques, and a caveat noting 1 unsupported rule.",
+          "caption": "HTML dashboard from a Sysmon capture, with blind spots and caveats reported alongside detections."
+        }
+      ]
+    },
+    {
+      "id": "castellan",
+      "name": "Castellan",
+      "meta": "Python · MIT",
+      "pitch": "NIST SP 800-53 / RMF compliance toolkit: describe a system in YAML, get a categorization, a baseline, a System Security Plan, a host scan, and a control-by-control report.",
+      "readout": [
+        {
+          "k": "assessable on host",
+          "v": "11 / 287"
+        },
+        {
+          "k": "tests · coverage",
+          "v": "208 · 97%"
+        }
+      ],
+      "highlights": [
+        "Emits OSCAL SSP, POA&M, and assessment-results JSON plus readable Markdown.",
+        "20 read-only Linux host checks mapped to controls through a table modeled on DISA CCI.",
+        "Never auto-pass: reports what it can technically assess instead of inflating results."
+      ],
+      "details": [
+        "NIST SP 800-53 / RMF compliance toolkit: describe a system in YAML, get FIPS-199 categorization, an SP 800-53B baseline, a System Security Plan, a read-only Linux hardening scan, and a control-by-control report.",
+        "Emits OSCAL SSP, POA&M, and assessment-results JSON plus human-readable Markdown; 20 read-only host checks mapped to controls through a hand-curated table modeled on DISA CCI.",
+        "\"Never auto-pass\" design: on a real Ubuntu host run against a moderate baseline (287 controls), it reports 11 technically assessable controls rather than inflating results.",
+        "208 tests at 97% coverage. Companion blog post: \"Map and Fortress: Why I Built Castellan.\""
+      ],
+      "tags": [
+        "Python",
+        "NIST 800-53",
+        "RMF",
+        "FIPS-199",
+        "OSCAL",
+        "Linux hardening"
+      ],
+      "links": [
+        {
+          "label": "GitHub",
+          "href": "https://github.com/mthompsen/castellan",
+          "icon": "ph-github-logo"
+        },
+        {
+          "label": "Map and Fortress",
+          "href": "https://mthompsen.github.io/blog/2026/06/10/map-and-fortress.html",
+          "icon": "ph-article"
+        }
+      ],
+      "screenshots": [
+        {
+          "src": "assets/screenshots/castellan-control-report.png",
+          "alt": "Castellan compliance report against an SP 800-53B moderate baseline: 5 implemented, 4 partial, 2 not implemented, 276 not assessed; 11 of 287 controls technically assessable.",
+          "caption": "Control-by-control report. Controls with no mapped check are reported as not assessed."
+        }
+      ]
+    },
+    {
+      "id": "scriptorium",
+      "name": "Scriptorium",
+      "meta": "Python / TypeScript / Java",
+      "pitch": "Multi-tenant document intelligence platform with hybrid retrieval, a knowledge graph, and a tool-using AI agent that returns grounded, cited answers.",
+      "readout": [
+        {
+          "k": "HIGH/CRIT + SAST findings",
+          "v": "41 → 0"
+        },
+        {
+          "k": "Checkov",
+          "v": "140 passed, 0 failed"
+        }
+      ],
+      "highlights": [
+        "Four services across three languages; runs end to end on a laptop, local LLM included.",
+        "Tenant isolation, RBAC, prompt-injection handling, tool allowlisting, citation validation.",
+        "Honest status table separates what runs live from what is authored and validated."
+      ],
+      "details": [
+        "Multi-tenant document intelligence platform: hybrid BM25 + vector retrieval with reciprocal rank fusion over OpenSearch, a Neo4j knowledge graph, and a tool-using AI agent that returns grounded, cited answers.",
+        "Four services across three languages (NestJS BFF, Flask ingestion and agent, Spring Boot retrieval), Next.js frontend, PostgreSQL / MongoDB / OpenSearch / Neo4j; runs end to end on a laptop via docker compose, including a local LLM (Ollama).",
+        "Security: server-side tenant isolation, RBAC, parameterized queries everywhere, prompt-injection handling, tool allowlisting, citation validation; 33 HIGH/CRITICAL plus 8 SAST findings driven to zero with no blanket waivers.",
+        "DevSecOps CI: Semgrep, gitleaks, Trivy, CodeQL, Syft SBOM, cosign keyless signing; Pact contract tests, Playwright e2e with axe-core accessibility gate; Kubernetes manifests validated on a real cluster, Terraform validated (Checkov 140 passed, 0 failed).",
+        "Honest status table separates what runs live from what is authored and validated. Eval: retrieval recall@5 = 1.0 on a small labeled set (stated as a pipeline proof, not a SOTA claim)."
+      ],
+      "tags": [
+        "RAG",
+        "AI agents",
+        "NestJS",
+        "Flask",
+        "Spring Boot",
+        "Next.js",
+        "Neo4j",
+        "OpenSearch",
+        "Docker",
+        "Kubernetes",
+        "Terraform",
+        "DevSecOps"
+      ],
+      "links": [
+        {
+          "label": "GitHub",
+          "href": "https://github.com/mthompsen/scriptorium",
+          "icon": "ph-github-logo"
+        }
+      ],
+      "cardTags": [
+        "RAG",
+        "AI agents",
+        "Kubernetes",
+        "Terraform",
+        "DevSecOps",
+        "Neo4j"
+      ],
+      "screenshots": [
+        {
+          "src": "assets/screenshots/scriptorium-status-table.png",
+          "alt": "Scriptorium status table separating what runs live (local stack, CI, security scans, CodeQL) from what is validated or authored only (Kubernetes, Argo CD, Azure DevOps).",
+          "caption": "Status table: what runs live versus what is authored and validated."
+        },
+        {
+          "src": "assets/screenshots/scriptorium-cited-answer.png",
+          "alt": "Scriptorium chat answering a paid time off question with an agent tool call, an answer citing a document chunk, and the cited source excerpt.",
+          "caption": "Agent answer with tool activity and a validated citation."
+        }
+      ]
+    },
+    {
+      "id": "watchtower",
+      "name": "Watchtower",
+      "meta": "C# / T-SQL · MIT",
+      "pitch": "A Windows desktop app and SQL Server database for a small SOC: triage Sigma alerts, run incidents through NIST SP 800-61 phases, and verify a tamper-evident audit log.",
+      "context": "CS 3320 Files and Database, St. Mary's University, fall 2026",
+      "repoPrivate": true,
+      "readout": [
+        {
+          "k": "tests passing",
+          "v": "248 unit · 338 integration · 4 UI"
+        },
+        {
+          "k": "tamper test",
+          "v": "edit at row 444 caught · T-SQL and C# agree"
+        }
+      ],
+      "highlights": [
+        "Every data change writes a row to a SHA-256 hash-chained audit log, written by SQL Server triggers.",
+        "Two independent verifiers, T-SQL and C#, must agree before the chain is reported intact.",
+        "The app role has no table permissions: only stored procedures and eight named views."
+      ],
+      "details": [
+        "Audit chain: 9 `TR_<TABLE>_Audit` triggers write one `AUDIT_ENTRY` row per changed row. Each row hashes `Audit_id`, analyst, action, table, key, time, old and new JSON, and `Prev_hash`. IDs are gapless under an exclusive applock. Verification flags any ID gap, any `Prev_hash` mismatch, or any recomputed hash mismatch, and reports the first broken row. `usp_VerifyAuditChain` and `AuditChainVerifier.cs` run inside one SERIALIZABLE transaction.",
+        "Honest limits of the chain: the hash is unkeyed, so a sysadmin could rebuild every hash after an edit, truncate the tail, or disable a trigger without detection. Anchoring the chain head externally is listed as remediation, not built.",
+        "Least privilege: the app signs in with Windows auth, then `sp_setapprole 'wt_app'`. It is denied writes to `AUDIT_ENTRY` and EXECUTE on the append procedures. The analyst ID is fixed in a read-only `SESSION_CONTEXT`. Every write procedure re-checks role and active status through `usp_Session_Require`. The UI hides controls but is not the enforcement point.",
+        "Passwords use PBKDF2-HMAC-SHA256 with 600,000 iterations, a 16-byte salt and a constant-time compare. Accounts lock for 15 minutes after 5 failures, and unknown emails get the same response as wrong passwords. There is no dynamic SQL anywhere: free text is escaped by `fn_ContainsPattern`, and sort columns are checked against an allow list.",
+        "Integration tests cover every CHECK, FK and UNIQUE constraint, wrong-role denial on every write procedure, injection strings in every text filter, and app-role denial of `SELECT * FROM ALERT` and `UPDATE AUDIT_ENTRY`. They also check that both verifiers agree after 1,000 random operations and catch modified and deleted rows. Not built: MFA, idle timeout, an account management screen, or live detection (rules are stored, never executed)."
+      ],
+      "tags": [
+        "C#",
+        ".NET 8",
+        "WinForms",
+        "SQL Server",
+        "T-SQL",
+        "SHA-256 hash chain",
+        "PBKDF2",
+        "Sigma",
+        "MITRE ATT&CK",
+        "NIST SP 800-53"
+      ],
+      "cardTags": [
+        "C#",
+        "SQL Server",
+        "SHA-256 hash chain",
+        "PBKDF2",
+        "Sigma",
+        "MITRE ATT&CK"
+      ],
+      "links": [],
+      "screenshots": [
+        {
+          "src": "assets/screenshots/watchtower-audit-intact.png",
+          "alt": "Watchtower Audit Log after Verify Integrity: the hash chain reported intact, with both verifiers in agreement.",
+          "caption": "Audit Log with the chain verified intact."
+        },
+        {
+          "src": "assets/screenshots/watchtower-audit-broken.png",
+          "alt": "Watchtower Audit Log after one stored row was edited directly in the database: a banner reports the chain broken at Audit_id 444, with the stored and recomputed hashes shown.",
+          "caption": "After a deliberate edit to one stored row: both verifiers flag Audit_id 444."
+        },
+        {
+          "src": "assets/screenshots/watchtower-alert-queue.png",
+          "alt": "Watchtower Alert Queue with filters, a list of Sigma alerts, and the raw event pane for the selected alert.",
+          "caption": "Alert Queue with filters and the raw event pane."
+        },
+        {
+          "src": "assets/screenshots/watchtower-incident-workspace.png",
+          "alt": "Watchtower Incident Workspace showing an incident with its NIST SP 800-61 phase stepper, linked alerts and notes.",
+          "caption": "Incident Workspace with the phase stepper."
+        }
+      ]
+    },
+    {
+      "id": "lodestone",
+      "name": "Lodestone",
+      "meta": "C11 · Capstone",
+      "pitch": "An x86-64 Linux debugger in C built on ptrace: int3 breakpoints, instruction stepping, disassembly, backtraces and strace-style syscall tracing.",
+      "repoPrivate": true,
+      "readout": [
+        {
+          "k": "debugger milestones",
+          "v": "13 of 13 (M0 to M12)"
+        },
+        {
+          "k": "syscalls decoded by name",
+          "v": "146"
+        }
+      ],
+      "highlights": [
+        "Full ptrace lifecycle: launch, attach, int3 breakpoints, single-step, register and memory read/write, detach.",
+        "Capstone disassembly, ELF symbols with PIE load bias, frame-pointer backtraces, syscall tracing.",
+        "Full session runs clean under AddressSanitizer and UndefinedBehaviorSanitizer, with leak detection on."
+      ],
+      "details": [
+        "Architecture: about 3,300 lines of C11. `include/lodestone.h` holds the central `debugger_t` state, `src/inferior.c` owns the ptrace lifecycle and stop classification, `src/repl.c` dispatches 17 commands, and each feature lives in its own module (`breakpoint.c`, `symbols.c`, `backtrace.c`, `syscall.c`, `capture.c`). Capstone is the only external dependency. ASLR is disabled in the child via `ADDR_NO_RANDOMIZE` for reproducible addresses.",
+        "Breakpoints and stepping: `break <symbol>` or `break *<addr>` saves the original byte and writes `0xCC`. On SIGTRAP the debugger rewinds RIP by one and restores the byte; resuming single-steps the original instruction with `PTRACE_SINGLESTEP`, re-plants the int3, then continues. Disassembly reads through a breakpoint shadow so planted int3s never appear. Memory uses `process_vm_readv`, with a `/proc/<pid>/mem` fallback for writes to read-only text.",
+        "Symbols, stack and syscalls: ELF `.symtab` and `.dynsym` are parsed directly, with no libelf. PIE load bias comes from `AT_ENTRY` in `/proc/<pid>/auxv`. `backtrace` walks the saved `rbp` chain with prologue sniffing. Syscall tracing uses `PTRACE_SYSCALL` with `PTRACE_O_TRACESYSGOOD` and `PTRACE_GET_SYSCALL_INFO`, and named catchpoints stop the target. Attach uses `PTRACE_SEIZE`; `detach` releases the process without killing it.",
+        "Testing: each milestone has a bash `gate.sh` with assertions, and a milestone is committed only when its gate passes. The `m12` gate rebuilds with `-fsanitize=address,undefined` and runs a full session with zero reports. A JSON event mode emits one event per line for tooling.",
+        "Limits, by design: single-threaded x86-64 Linux targets only. No threads, no hardware watchpoints, no DWARF line or variable info (symbol level only), no remote protocol, and no source-level step over, only `stepi`. Attaching to a process that isn't a child needs `ptrace_scope=0` or `CAP_SYS_PTRACE`."
+      ],
+      "tags": [
+        "C",
+        "Linux",
+        "ptrace",
+        "x86-64",
+        "ELF",
+        "Capstone",
+        "Debugger internals",
+        "Syscall tracing",
+        "AddressSanitizer"
+      ],
+      "cardTags": [
+        "C",
+        "Linux",
+        "ptrace",
+        "x86-64",
+        "ELF",
+        "Capstone"
+      ],
+      "links": [],
+      "screenshots": [
+        {
+          "src": "assets/screenshots/lodestone-session.png",
+          "alt": "Lodestone terminal session on a test program: a breakpoint on level_c is hit, then disassembly, a seven-frame backtrace through level_b, level_a and main, two single instruction steps, the breakpoint table, and a catchpoint stopping on the write syscall at entry and exit before the target exits with code 0.",
+          "caption": "Real session against the nested test program. Most register lines and a second disassembly are trimmed for length; nothing else is changed."
+        }
+      ]
+    },
+    {
+      "id": "rampart",
+      "name": "Rampart",
+      "meta": "Ansible / Python · MIT",
+      "pitch": "Hardens a fresh Rocky Linux 9 server toward the DISA RHEL 9 STIG with Ansible, proves it with OpenSCAP scans before and after, and exports NIST SP 800-53 evidence as OSCAL.",
+      "readout": [
+        {
+          "k": "STIG pass rate",
+          "v": "38.5% → 94.4%"
+        },
+        {
+          "k": "still failing",
+          "v": "24, each a documented exception"
+        }
+      ],
+      "highlights": [
+        "16 Ansible roles, every task tagged with its STIG ID; second run reports changed=0.",
+        "Unedited OpenSCAP results before and after; 404 of 428 evaluated rules pass after hardening.",
+        "437 rules mapped STIG ID to CCI to 800-53 Rev 5; OSCAL 1.1.3 export validates against NIST's schema."
+      ],
+      "details": [
+        "Target and method: one Rocky Linux 9.8 lab VM under QEMU/KVM, scanned with OpenSCAP and SCAP Security Guide 0.1.82 using the DISA RHEL 9 STIG profile. Baseline: 163 pass, 260 fail (38.5%). After `make harden`, a reboot and a re-scan: 404 pass, 24 fail (94.4%). Scan results in `results/` come only from `oscap` and none was edited by hand.",
+        "Hardening: 16 roles (ssh, audit, pam, accounts, sysctl, kmods, packages, services, mounts, sudo, crypto with the `FIPS:STIG` policy, logging, network, aide, files, boot). Every task is tagged with its STIG ID and SSG rule name, so `ansible-playbook --tags <rule>` applies a single rule. The second playbook run reports `changed=0`, and SSH access is verified after hardening.",
+        "Exceptions: `exceptions.yml` lists 25 rules not remediated in the lab, each with a written justification: partitioning that must be decided at install time, a GRUB password that needs an operator's secret, remote log encryption and DNS that need site infrastructure, and SSG MAC rules that contradict the FIPS crypto policy (FIPS was kept).",
+        "Evidence: `tools/gen_mapping.py` maps each rule to STIG ID, CCI (from DISA's RHEL 9 STIG V2R8 XCCDF) and 800-53 Rev 5 control (from DISA's CCI list). 437 of 1,540 rules map; the rest are outside the STIG profile and marked unmapped with that reason. `python -m rampart oscal` emits OSCAL 1.1.3 assessment-results that validate against NIST's schema.",
+        "Testing and limits: Molecule converge, idempotence and verify against the VM, pytest for the report and export code, lint in CI. Molecule is not run in CI because the runners have no KVM image. Castellan, the intended consumer of the OSCAL export, has no import command yet, so no import is claimed."
+      ],
+      "tags": [
+        "Ansible",
+        "OpenSCAP",
+        "DISA STIG",
+        "Rocky Linux 9",
+        "Python",
+        "NIST 800-53",
+        "OSCAL",
+        "CCI",
+        "Molecule",
+        "QEMU/KVM"
+      ],
+      "cardTags": [
+        "Ansible",
+        "OpenSCAP",
+        "DISA STIG",
+        "Rocky Linux 9",
+        "NIST 800-53",
+        "OSCAL"
+      ],
+      "links": [
+        {
+          "label": "GitHub",
+          "href": "https://github.com/mthompsen/rampart",
+          "icon": "ph-github-logo"
+        }
+      ],
+      "screenshots": [
+        {
+          "src": "assets/screenshots/rampart-report-card.png",
+          "alt": "Rampart report card: STIG pass rate 38.5% before (163 pass, 260 fail) and 94.4% after (404 pass, 24 fail), with pass and fail bars for CAT I, II and III before and after, and checks for a zero-change second run, SSH verified after hardening, and a schema-valid OSCAL export.",
+          "caption": "Before and after one playbook run, from the unedited OpenSCAP scans."
+        },
+        {
+          "src": "assets/screenshots/rampart-report.png",
+          "alt": "Rampart's offline HTML report: pass rate before and after, pass and fail by severity, the table of 241 changed rules, the 24 still failing rules with their written justifications, NIST SP 800-53 coverage by control family, and evidence checks.",
+          "caption": "Generated report: every changed rule, every remaining failure with its reason, and 800-53 coverage."
+        }
+      ]
+    }
+  ],
+  "more": [
+    {
+      "name": "Scribe",
+      "description": "Single-file browser app that transcribes lectures with Groq Whisper, files transcripts by course using a scraped catalog of 1,486 St. Mary's courses (refreshed by a monthly GitHub Action with sanity guards), and runs an optional LLM cleanup pass. Streaming MP3 splitter keeps memory near 1 MB on phones; in-browser ffmpeg.wasm; Playwright tests across Chromium, Firefox, and mobile.",
+      "links": [
+        {
+          "label": "GitHub",
+          "href": "https://github.com/mthompsen/scribe"
+        },
+        {
+          "label": "Live",
+          "href": "https://mthompsen.github.io/scribe"
+        }
+      ]
+    },
+    {
+      "name": "Security Tools Portfolio",
+      "description": "Log parser, async TCP port scanner, and password strength checker with Have I Been Pwned k-anonymity lookup. Standard library only, fully type-hinted, 104 unit tests, CI on Python 3.10 to 3.12.",
+      "links": [
+        {
+          "label": "GitHub",
+          "href": "https://github.com/mthompsen/security-tools-portfolio"
+        }
+      ]
+    }
+  ],
+  "inProgress": [
+    {
+      "name": "Citadel",
+      "show": true,
+      "description": "Expansion of Bastion into a full security suite (purple-team \"Arena\" playground with Sigma correlation rules, NIST/OSCAL compliance module); milestones M1 and M2 complete."
+    }
+  ],
+  "experience": [
+    {
+      "role": "Senior Software Engineer (Contract)",
+      "org": "Comico Games UG",
+      "location": "Remote, with a Germany-based team",
+      "dates": "March 2022 to May 2023",
+      "bullets": [
+        "One of the senior engineers on ScreenPlay, a collectible card game in GameMaker Studio 2.3 later released on Steam Early Access, and contributed to Project Blitz, a web-based auto-battler.",
+        "Extended the UI framework (reusable sliders tied to audio settings, configurable canvas transitions, chained screen sequences); implemented text input, text selection, and mouse dragging.",
+        "Found and fixed input-routing defects, including a bug letting players select cards hidden beneath overlapping highlights and an unintended key shortcut that disabled the game background.",
+        "Tuned card and unit values against playtest feedback; worked asynchronously across time zones through GitLab merge requests and code review on a team of about a dozen."
+      ]
+    },
+    {
+      "role": "Customer Service Representative",
+      "org": "Alorica",
+      "location": "San Antonio, TX",
+      "dates": "2024 to 2025",
+      "bullets": [
+        "Resolved inbound account and technical issues in a high-volume call center following documented escalation procedures."
+      ]
+    },
+    {
+      "role": "Graphics Programmer",
+      "org": "Frozenwisp Studios (Purity of Blood)",
+      "location": "Remote",
+      "dates": "2018 to 2019",
+      "bullets": [
+        "Lead graphics programmer; GLSL shaders, procedural bump and normal maps, automapping, lighting, water effects."
+      ]
+    },
+    {
+      "role": "Junior Software Programmer",
+      "org": "Dyad Games",
+      "location": "Remote",
+      "dates": "January 2014 to January 2015",
+      "bullets": [
+        "Programmed the frozen yogurt and pizza minigames and their UI in Cookie Swirl World, shipped on Android and iOS; worked directly with the CEO."
+      ]
+    }
+  ],
+  "otherWork": {
+    "show": true,
+    "text": "Crew member roles at McDonald's (Washington) and Whataburger (San Antonio)."
+  },
+  "education": [
+    {
+      "school": "St. Mary's University",
+      "location": "San Antonio, TX",
+      "degree": "B.S. Computer Science (Cybersecurity Track) and B.A. Theology, Minor in Mathematics",
+      "dates": "Expected December 2029",
+      "facts": [
+        "GPA 3.76",
+        "Trustee Scholarship",
+        "Transfer Promise Scholarship"
+      ],
+      "coursework": [
+        "Algorithms",
+        "Files and Database Systems",
+        "Programming Fundamentals I and II",
+        "Calculus I",
+        "Introduction to Logic",
+        "Sophomore CS Seminar"
+      ]
+    },
+    {
+      "school": "San Antonio College",
+      "location": "San Antonio, TX",
+      "degree": "A.A. Philosophy",
+      "dates": "In progress, reverse transfer",
+      "facts": [],
+      "coursework": []
+    }
+  ],
+  "skills": [
+    {
+      "group": "Security",
+      "items": [
+        "MITRE ATT&CK",
+        "Sigma detection engineering",
+        "NIST 800-53 / RMF",
+        "FIPS-199",
+        "OSCAL",
+        "Linux hardening",
+        "EVTX analysis",
+        "SARIF"
+      ]
+    },
+    {
+      "group": "Languages",
+      "items": [
+        "Python",
+        "C",
+        "C++",
+        "C#",
+        "Java",
+        "TypeScript / JavaScript",
+        "SQL",
+        "Cypher",
+        "GLSL",
+        "GML"
+      ]
+    },
+    {
+      "group": "Frameworks",
+      "items": [
+        "Flask",
+        "Spring Boot",
+        "NestJS",
+        "Next.js / React",
+        "pytest",
+        "JUnit 5",
+        "Jest",
+        "Playwright",
+        "Pact"
+      ]
+    },
+    {
+      "group": "Infrastructure and DevSecOps",
+      "items": [
+        "Docker",
+        "Kubernetes",
+        "Terraform",
+        "AWS",
+        "GitHub Actions",
+        "GitLab CI",
+        "PostgreSQL",
+        "MongoDB",
+        "OpenSearch",
+        "Neo4j",
+        "SQL Server",
+        "Semgrep",
+        "Trivy",
+        "CodeQL",
+        "gitleaks",
+        "cosign"
+      ]
+    },
+    {
+      "group": "AI systems",
+      "items": [
+        "Retrieval-augmented generation",
+        "Agentic tool-use loops with guardrails",
+        "Evaluation harnesses",
+        "Ollama",
+        "Bedrock"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "CompTIA A+",
+      "status": "Earned"
+    },
+    {
+      "name": "CompTIA Security+ (SY0-701)",
+      "status": "In progress, exam targeted February 2027"
+    }
+  ],
+  "writing": {
+    "feed": "/feed.xml",
+    "featured": {
+      "title": "Map and Fortress: Why I Built Castellan",
+      "date": "June 10, 2026",
+      "summary": "On why compliance should verify what is actually in place rather than paperwork.",
+      "href": "https://mthompsen.github.io/blog/2026/06/10/map-and-fortress.html"
+    }
+  },
+  "community": [
+    "Volunteer at Haven for Hope, San Antonio, and local food drives."
+  ]
+}
