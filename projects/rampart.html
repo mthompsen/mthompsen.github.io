@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<base href="../"><style>
+    .sc-placeholder{background:color-mix(in srgb,currentColor 8%,transparent);
+      border:1px solid color-mix(in srgb,currentColor 50%,transparent);
+      border-radius:2px;box-sizing:border-box;overflow:hidden}
+    @keyframes sc-shine{0%{background-position:100% 50%}100%{background-position:0% 50%}}
+    html.sc-dc-streaming .sc-placeholder,
+    html.sc-dc-streaming .sc-interp.sc-missing{position:relative;
+      background:color-mix(in srgb,currentColor 5%,transparent);
+      border-color:transparent}
+    html.sc-dc-streaming .sc-placeholder::before,
+    html.sc-dc-streaming .sc-interp.sc-missing::before{content:'';
+      position:absolute;inset:0;pointer-events:none;
+      background:linear-gradient(90deg,rgba(217,119,87,0) 25%,rgba(247,225,211,.95) 37%,rgba(217,119,87,0) 63%);
+      background-size:400% 100%;animation:sc-shine 1.4s ease infinite}
+    html.sc-dc-streaming .sc-placeholder:nth-child(n+9 of .sc-placeholder)::before,
+    html.sc-dc-streaming .sc-interp.sc-missing:nth-child(n+9 of .sc-interp.sc-missing)::before{animation:none;
+      background:color-mix(in srgb,currentColor 8%,transparent)}
+    .sc-placeholder-error{padding:4px 8px;font:11px/1.4 ui-monospace,monospace;
+      color:color-mix(in srgb,currentColor 70%,transparent);word-break:break-word}
+    .sc-interp.sc-missing{display:inline-block;width:2em;height:1em;overflow:hidden;
+      vertical-align:text-bottom;background:rgba(255,255,255,.3);border:1px solid rgba(0,0,0,.5);
+      border-radius:2px;box-sizing:border-box;color:transparent;
+      user-select:none}
+    .sc-interp.sc-unresolved{font-family:ui-monospace,monospace;font-size:.85em;
+      color:color-mix(in srgb,currentColor 50%,transparent);
+      background:color-mix(in srgb,currentColor 10%,transparent);border-radius:3px;
+      padding:0 3px}
+    .sc-host.sc-has-error{position:relative}
+    .sc-logic-error{position:absolute;top:8px;left:8px;z-index:2147483647;max-width:60ch;
+      padding:6px 10px;background:#b00020;color:#fff;font:12px/1.4 ui-monospace,monospace;
+      border-radius:4px;white-space:pre-wrap;pointer-events:none}
+    /* Mirrors PRINT_BASELINE_CSS in apps/web deck-stage-export.ts — keep both
+       in sync until dc-runtime regains a build step. */
+    @media print {
+      @page { margin: 0.5cm; }
+      figure, table { break-inside: avoid; }
+      #dc-root, #dc-root > .sc-host { height: auto; }
+      *, *::before, *::after {
+        print-color-adjust: exact; -webkit-print-color-adjust: exact;
+        backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
+        animation-delay: -99s !important; animation-duration: .001s !important;
+        animation-iteration-count: 1 !important; animation-fill-mode: both !important;
+        animation-play-state: running !important; transition-duration: 0s !important;
+      }
+    }
+  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>x-dc{display:none!important}</style>
+<style></style><style>html,body{height:100%;margin:0}#dc-root,#dc-root>.sc-host{height:100%}</style><title>Rampart · Mason Thompsen</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Mason Thompsen: security engineering student building detection, compliance, and AI-platform tooling. St. Mary's University, San Antonio, TX."><meta property="og:type" content="website"><meta property="og:title" content="Mason Thompsen · Security engineering"><meta property="og:description" content="Security engineering student building detection, compliance, and AI-platform tooling."><meta property="og:url" content="https://mthompsen.github.io/"><meta property="og:image" content="https://mthompsen.github.io/og-image.png"><meta name="twitter:card" content="summary_large_image"><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23161826'/%3E%3Cpath d='M7 27V8h4v3h3.5V8h3v3H21V8h4v19h-6.5v-5a2.5 2.5 0 0 0-5 0v5z' fill='%239184d9'/%3E%3C/svg%3E"><link rel="stylesheet" href="ds/styles.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;display=swap"><link rel="stylesheet" href="lib/phosphor/style.css"><style>
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+    body { margin: 0; background: var(--color-bg); color: var(--color-text); -webkit-font-smoothing: antialiased; }
+    a { color: var(--color-accent-300); }
+    a:hover { color: var(--color-accent-200); }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style><style>html:not(.js) [data-js-only]{display:none !important}</style>
+<script src="assets/site.js"></script>
+</head>
+<body><main style="min-height: 100vh; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body);"><div style="max-width: 760px; margin: 0 auto; padding: clamp(24px, 5vw, 56px) clamp(20px, 5vw, 40px) 64px; display: grid; gap: 20px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+          <div style="display: flex; align-items: center; gap: 10px; color: var(--color-accent);"><svg width="34" height="8" viewBox="0 0 34 8" aria-hidden="true"><path d="M0 8V0h6v3h8V0h6v3h8V0h6v8z" fill="currentColor"></path></svg><span style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; color: var(--color-neutral-300);"><span class="sc-interp">Ansible / Python · MIT</span></span></div>
+          <a class="btn btn-secondary" href="index.html#card-rampart"><i class="ph ph-arrow-left" aria-hidden="true"></i>All projects</a>
+        </div>
+        <h2 id="panel-title" style="font-size: 34px; margin: 0px;"><span class="sc-interp">Rampart</span></h2>
+        <p style="margin: 0px; font-size: 17px; line-height: 1.55; text-wrap: pretty;"><span class="sc-interp">Hardens a fresh Rocky Linux 9 server toward the DISA RHEL 9 STIG with Ansible, proves it with OpenSCAP scans before and after, and exports NIST SP 800-53 evidence as OSCAL.</span></p>
+        
+        
+        
+          <figure style="margin: 0px; display: grid; gap: 8px;">
+            <a href="assets/diagrams/rampart-architecture.png" target="_blank" rel="noopener" class="scp2" style="display: block; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm);">
+              <img src="assets/diagrams/rampart-architecture.png" alt="Architecture diagram of Rampart. The scan, harden and re-scan pipeline, and the STIG to CCI to 800-53 mapping behind the OSCAL export." loading="lazy" style="display: block; width: 100%; height: auto;">
+            </a>
+            <figcaption style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; line-height: 1.5; color: var(--color-neutral-300); text-wrap: pretty;">Architecture · <span class="sc-interp">The scan, harden and re-scan pipeline, and the STIG to CCI to 800-53 mapping behind the OSCAL export.</span></figcaption>
+          </figure>
+        
+        
+          <figure style="margin: 0px; display: grid; gap: 8px;">
+            <a href="assets/screenshots/rampart-report-card.png" target="_blank" rel="noopener" class="scp2" style="display: block; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm);">
+              <img src="assets/screenshots/rampart-report-card.png" alt="Rampart report card: STIG pass rate 38.5% before (163 pass, 260 fail) and 94.4% after (404 pass, 24 fail), with pass and fail bars for CAT I, II and III before and after, and checks for a zero-change second run, SSH verified after hardening, and a schema-valid OSCAL export." loading="lazy" style="display: block; width: 100%; height: auto;">
+            </a>
+            <figcaption style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; line-height: 1.5; color: var(--color-neutral-300); text-wrap: pretty;"><span class="sc-interp">Before and after one playbook run, from the unedited OpenSCAP scans.</span></figcaption>
+          </figure>
+        
+          <figure style="margin: 0px; display: grid; gap: 8px;">
+            <a href="assets/screenshots/rampart-report.png" target="_blank" rel="noopener" class="scp2" style="display: block; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm);">
+              <img src="assets/screenshots/rampart-report.png" alt="Rampart's offline HTML report: pass rate before and after, pass and fail by severity, the table of 241 changed rules, the 24 still failing rules with their written justifications, NIST SP 800-53 coverage by control family, and evidence checks." loading="lazy" style="display: block; width: 100%; height: auto;">
+            </a>
+            <figcaption style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; line-height: 1.5; color: var(--color-neutral-300); text-wrap: pretty;"><span class="sc-interp">Generated report: every changed rule, every remaining failure with its reason, and 800-53 coverage.</span></figcaption>
+          </figure>
+        
+        <dl style="margin: 0px; padding: 12px 14px; border-radius: var(--radius-md); background: var(--color-bg); box-shadow: inset 0 0 0 1px var(--color-divider); font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 13px; display: grid; gap: 4px;">
+          
+            <div style="display: flex; justify-content: space-between; gap: 12px;"><dt style="color: var(--color-neutral-300);"><span class="sc-interp">STIG pass rate</span></dt><dd style="margin: 0px; color: var(--color-accent-300);"><span class="sc-interp">38.5% → 94.4%</span></dd></div>
+          
+            <div style="display: flex; justify-content: space-between; gap: 12px;"><dt style="color: var(--color-neutral-300);"><span class="sc-interp">still failing</span></dt><dd style="margin: 0px; color: var(--color-accent-300);"><span class="sc-interp">24, each a documented exception</span></dd></div>
+          
+        </dl>
+        <ul style="margin: 0px; padding: 0px 0px 0px 18px; display: grid; gap: 12px; font-size: 15px; line-height: 1.65; color: var(--color-neutral-200);">
+          
+            <li style="text-wrap: pretty;"><span><span class="sc-interp">Target and method: one Rocky Linux 9.8 lab VM under QEMU/KVM, scanned with OpenSCAP and SCAP Security Guide 0.1.82 using the DISA RHEL 9 STIG profile. Baseline: 163 pass, 260 fail (38.5%). After </span></span><code style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 13px; padding: 1px 5px; border-radius: var(--radius-sm); background: var(--color-neutral-800); color: var(--color-neutral-100);"><span class="sc-interp">make harden</span></code><span><span class="sc-interp">, a reboot and a re-scan: 404 pass, 24 fail (94.4%). Scan results in </span></span><code style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 13px; padding: 1px 5px; border-radius: var(--radius-sm); background: var(--color-neutral-800); color: var(--color-neutral-100);"><span class="sc-interp">results/</span></code><span><span class="sc-interp"> come only from </span></span><code style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 13px; padding: 1px 5px; border-radius: var(--radius-sm); background: var(--color-neutral-800); color: var(--color-neutral-100);"><span class="sc-interp">oscap</span></code><span><span class="sc-interp"> and none was edited by hand.</span></span></li>
+          
+            <li style="text-wrap: pretty;"><span><span class="sc-interp">Hardening: 16 roles (ssh, audit, pam, accounts, sysctl, kmods, packages, services, mounts, sudo, crypto with the </span></span><code style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 13px; padding: 1px 5px; border-radius: var(--radius-sm); background: var(--color-neutral-800); color: var(--color-neutral-100);"><span class="sc-interp">FIPS:STIG</span></code><span><span class="sc-interp"> policy, logging, network, aide, files, boot). Every task is tagged with its STIG ID and SSG rule name, so </span></span><code style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 13px; padding: 1px 5px; border-radius: var(--radius-sm); background: var(--color-neutral-800); color: var(--color-neutral-100);"><span class="sc-interp">ansible-playbook --tags &lt;rule&gt;</span></code><span><span class="sc-interp"> applies a single rule. The second playbook run reports </span></span><code style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 13px; padding: 1px 5px; border-radius: var(--radius-sm); background: var(--color-neutral-800); color: var(--color-neutral-100);"><span class="sc-interp">changed=0</span></code><span><span class="sc-interp">, and SSH access is verified after hardening.</span></span></li>
+          
+            <li style="text-wrap: pretty;"><span><span class="sc-interp">Exceptions: </span></span><code style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 13px; padding: 1px 5px; border-radius: var(--radius-sm); background: var(--color-neutral-800); color: var(--color-neutral-100);"><span class="sc-interp">exceptions.yml</span></code><span><span class="sc-interp"> lists 25 rules not remediated in the lab, each with a written justification: partitioning that must be decided at install time, a GRUB password that needs an operator's secret, remote log encryption and DNS that need site infrastructure, and SSG MAC rules that contradict the FIPS crypto policy (FIPS was kept).</span></span></li>
+          
+            <li style="text-wrap: pretty;"><span><span class="sc-interp">Evidence: </span></span><code style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 13px; padding: 1px 5px; border-radius: var(--radius-sm); background: var(--color-neutral-800); color: var(--color-neutral-100);"><span class="sc-interp">tools/gen_mapping.py</span></code><span><span class="sc-interp"> maps each rule to STIG ID, CCI (from DISA's RHEL 9 STIG V2R8 XCCDF) and 800-53 Rev 5 control (from DISA's CCI list). 437 of 1,540 rules map; the rest are outside the STIG profile and marked unmapped with that reason. </span></span><code style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 13px; padding: 1px 5px; border-radius: var(--radius-sm); background: var(--color-neutral-800); color: var(--color-neutral-100);"><span class="sc-interp">python -m rampart oscal</span></code><span><span class="sc-interp"> emits OSCAL 1.1.3 assessment-results that validate against NIST's schema.</span></span></li>
+          
+            <li style="text-wrap: pretty;"><span><span class="sc-interp">Testing and limits: Molecule converge, idempotence and verify against the VM, pytest for the report and export code, lint in CI. Molecule is not run in CI because the runners have no KVM image. Castellan, the intended consumer of the OSCAL export, has no import command yet, so no import is claimed.</span></span></li>
+          
+        </ul>
+        <ul aria-label="Technologies" style="list-style: none; margin: 0px; padding: 0px; display: flex; flex-wrap: wrap; gap: 6px;">
+          <li class="tag tag-neutral" style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 11.5px;"><span class="sc-interp">Ansible</span></li><li class="tag tag-neutral" style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 11.5px;"><span class="sc-interp">OpenSCAP</span></li><li class="tag tag-neutral" style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 11.5px;"><span class="sc-interp">DISA STIG</span></li><li class="tag tag-neutral" style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 11.5px;"><span class="sc-interp">Rocky Linux 9</span></li><li class="tag tag-neutral" style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 11.5px;"><span class="sc-interp">Python</span></li><li class="tag tag-neutral" style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 11.5px;"><span class="sc-interp">NIST 800-53</span></li><li class="tag tag-neutral" style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 11.5px;"><span class="sc-interp">OSCAL</span></li><li class="tag tag-neutral" style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 11.5px;"><span class="sc-interp">CCI</span></li><li class="tag tag-neutral" style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 11.5px;"><span class="sc-interp">Molecule</span></li><li class="tag tag-neutral" style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 11.5px;"><span class="sc-interp">QEMU/KVM</span></li>
+        </ul>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          
+            <a class="btn btn-primary" href="https://github.com/mthompsen/rampart" style="min-height: 40px;"><i class="ph ph-github-logo" aria-hidden="true"></i><span class="sc-interp">GitHub</span></a>
+          
+          
+        </div>
+      </div></main></body></html>

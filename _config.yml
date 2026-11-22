@@ -21,5 +21,6 @@ permalink: /blog/:year/:month/:day/:title:output_ext
 # Portfolio files are served as-is; keep build-only files out of the site.
 exclude:
   - README.md
+  - tools/
   - Gemfile
   - Gemfile.lock

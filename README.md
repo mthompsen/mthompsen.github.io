@@ -37,8 +37,17 @@ have `published: false`, and `--livereload` refreshes the browser on save.
 
 ## Layout
 
-- `/` is the portfolio page: `index.html` plus `data/portfolio.json` (all content), `assets/screenshots/`,
-  `ds/` (Nocturne styles), `support.js` and `lib/` (React and Phosphor icons, served locally, no CDN).
-  These files have no front matter, so Jekyll copies them unchanged.
+- `/` is the portfolio. `index.html` and `projects/<id>.html` are **pre-rendered static HTML**, so the site
+  works with JavaScript turned off. `assets/site.js` only adds extras (theme toggle, copy-email button,
+  redirect for old `#project-<id>` links).
+- `app.html` is the source page: it renders itself from `data/portfolio.json` with `support.js` and React
+  from `lib/` (served locally, no CDN). Edit the data or `app.html`, then regenerate the static pages:
+
+  ```sh
+  bundle exec jekyll build
+  python3 tools/prerender.py      # needs Google Chrome
+  bundle exec jekyll build
+  ```
+
 - `/blog/` is the Jekyll blog (minima theme). Posts live at `/blog/YYYY/MM/DD/title.html`; older post URLs
   redirect there through `jekyll-redirect-from`. The feed stays at `/feed.xml`.
