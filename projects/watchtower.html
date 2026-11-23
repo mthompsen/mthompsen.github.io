@@ -68,6 +68,11 @@
         <p style="margin: 0px; font-size: 17px; line-height: 1.55; text-wrap: pretty;"><span class="sc-interp">A Windows desktop app and SQL Server database for a small SOC: triage Sigma alerts, run incidents through NIST SP 800-61 phases, and verify a tamper-evident audit log.</span></p>
         <p style="margin: 0px; font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12.5px; color: var(--color-neutral-300);"><span class="sc-interp">CS 3320 Files and Database, St. Mary's University, fall 2026</span></p>
         
+          <figure style="margin: 0px; display: grid; gap: 8px;">
+            <video src="assets/videos/watchtower-demo.mp4" poster="assets/videos/watchtower-demo.jpg" controls="" preload="none" playsinline="playsinline" aria-label="Watchtower app walkthrough ending with a tamper test: the audit chain is reported broken at Audit_id 445, then intact after restore." style="display: block; width: 100%; height: auto; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); background: var(--color-bg);"></video>
+            <figcaption style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; line-height: 1.5; color: var(--color-neutral-300); text-wrap: pretty;">Demo · <span class="sc-interp">The Windows app against its local database: sign-in, Dashboard, today's Alert Queue with a raw Sysmon event, an incident in the Incident Workspace, and Verify Integrity reporting the chain intact. tamper-demo.ps1 then edits Audit_id 445; both verifiers and the app report the break. The restore script fixes it and the app reports the chain intact again.</span></figcaption>
+          </figure>
+        
         
           <figure style="margin: 0px; display: grid; gap: 8px;">
             <a href="assets/diagrams/watchtower-architecture.png" target="_blank" rel="noopener" class="scp2" style="display: block; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm);">

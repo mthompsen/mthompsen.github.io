@@ -75,7 +75,12 @@
         "alt": "Architecture diagram of Bastion. How a log file and the pinned SigmaHQ ruleset become detections, ATT&CK mappings, a coverage map with blind spots, and five output formats.",
         "caption": "How a log file and the pinned SigmaHQ ruleset become detections, ATT&CK mappings, a coverage map with blind spots, and five output formats."
       },
-      "video": null
+      "video": {
+        "src": "assets/videos/bastion-demo.mp4",
+        "poster": "assets/videos/bastion-demo.jpg",
+        "caption": "A real run: bastion scan on a BITS-job persistence log (3 detections, 2 techniques), bastion coverage, bastion report writing six formats, then the generated dashboard: detections with the raw event, timeline, coverage bars and red blind-spot chips. Two coverage counts appear: bastion coverage reports 401 of 706 for its full loaded ruleset, while the scan and dashboard report 314 of 706, the figure used on this page.",
+        "alt": "Terminal session running bastion scan, coverage and report, followed by the generated HTML dashboard."
+      }
     },
     {
       "id": "castellan",
@@ -135,7 +140,12 @@
         "alt": "Architecture diagram of Castellan. How a system description and a read-only host scan become a FIPS-199 categorization, a baseline, an SSP, and control-by-control evidence.",
         "caption": "How a system description and a read-only host scan become a FIPS-199 categorization, a baseline, an SSP, and control-by-control evidence."
       },
-      "video": null
+      "video": {
+        "src": "assets/videos/castellan-demo.mp4",
+        "poster": "assets/videos/castellan-demo.jpg",
+        "caption": "A real run on a WSL Ubuntu host without root: categorize (Moderate), the list of checks, a scan with 8 pass, 5 fail, 1 error and 6 not applicable (the error is /etc/shadow, unreadable without root, reported honestly), then the report and POA&M it writes.",
+        "alt": "Terminal session running castellan categorize, checks, scan and report."
+      }
     },
     {
       "id": "scriptorium",
@@ -289,7 +299,12 @@
         "alt": "Architecture diagram of Watchtower. How every data change reaches the hash-chained audit log, and how two independent verifiers check it.",
         "caption": "How every data change reaches the hash-chained audit log, and how two independent verifiers check it."
       },
-      "video": null
+      "video": {
+        "src": "assets/videos/watchtower-demo.mp4",
+        "poster": "assets/videos/watchtower-demo.jpg",
+        "caption": "The Windows app against its local database: sign-in, Dashboard, today's Alert Queue with a raw Sysmon event, an incident in the Incident Workspace, and Verify Integrity reporting the chain intact. tamper-demo.ps1 then edits Audit_id 445; both verifiers and the app report the break. The restore script fixes it and the app reports the chain intact again.",
+        "alt": "Watchtower app walkthrough ending with a tamper test: the audit chain is reported broken at Audit_id 445, then intact after restore."
+      }
     },
     {
       "id": "lodestone",
@@ -363,7 +378,12 @@
         "alt": "Architecture diagram of Lodestone. How REPL commands drive the target through ptrace, and how each stop also reaches the browser GUI.",
         "caption": "How REPL commands drive the target through ptrace, and how each stop also reaches the browser GUI."
       },
-      "video": null
+      "video": {
+        "src": "assets/videos/lodestone-demo.mp4",
+        "poster": "assets/videos/lodestone-demo.jpg",
+        "caption": "The REPL on the nested test program: breakpoint on level_c, registers, disassembly, backtrace, two single steps, and a write syscall caught at entry and exit. Then the browser GUI on the same program: stopped at level_c, then the Syscalls view after the target exits.",
+        "alt": "Lodestone terminal session, then its browser GUI stopped at a breakpoint and its syscall trace."
+      }
     },
     {
       "id": "rampart",
@@ -436,7 +456,12 @@
         "alt": "Architecture diagram of Rampart. The scan, harden and re-scan pipeline, and the STIG to CCI to 800-53 mapping behind the OSCAL export.",
         "caption": "The scan, harden and re-scan pipeline, and the STIG to CCI to 800-53 mapping behind the OSCAL export."
       },
-      "video": null
+      "video": {
+        "src": "assets/videos/rampart-demo.mp4",
+        "poster": "assets/videos/rampart-demo.jpg",
+        "caption": "No VM is booted here: this replays the saved OpenSCAP results from the 2026-11-14 lab run, as the video states. make oscal validates the export (0 schema errors), make report rebuilds the summary, and the HTML report shows 38.5% before and 94.4% after, changed rules, failures with reasons and 800-53 coverage.",
+        "alt": "Terminal session running make oscal and make report on the saved scans, then the generated before and after report."
+      }
     }
   ],
   "more": [

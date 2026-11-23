@@ -45,6 +45,8 @@ def clean(doc, source_head_icon):
     # buttons that need JavaScript are hidden until site.js runs
     doc = re.sub(r'<button([^>]*)>(\s*<i[^>]*ph-copy)', r'<button\1 data-copy-email="" data-js-only="">\2', doc, count=1)
     doc = doc.replace("data-theme-toggle=\"\"", "data-theme-toggle=\"\" data-js-only=\"\"", 1)
+    # make sure every video can be played without JavaScript
+    doc = re.sub(r"<video\b(?![^>]*\bcontrols\b)", "<video controls", doc)
     head_extra = ('<style>html:not(.js) [data-js-only]{display:none !important}</style>\n'
                   '<script src="assets/site.js"></script>\n</head>')
     return doc.replace("</head>", head_extra, 1)

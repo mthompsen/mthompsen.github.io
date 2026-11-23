@@ -68,6 +68,11 @@
         <p style="margin: 0px; font-size: 17px; line-height: 1.55; text-wrap: pretty;"><span class="sc-interp">An x86-64 Linux debugger in C built on ptrace: int3 breakpoints, instruction stepping, disassembly, backtraces and strace-style syscall tracing.</span></p>
         
         
+          <figure style="margin: 0px; display: grid; gap: 8px;">
+            <video src="assets/videos/lodestone-demo.mp4" poster="assets/videos/lodestone-demo.jpg" controls="" preload="none" playsinline="playsinline" aria-label="Lodestone terminal session, then its browser GUI stopped at a breakpoint and its syscall trace." style="display: block; width: 100%; height: auto; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); background: var(--color-bg);"></video>
+            <figcaption style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; line-height: 1.5; color: var(--color-neutral-300); text-wrap: pretty;">Demo · <span class="sc-interp">The REPL on the nested test program: breakpoint on level_c, registers, disassembly, backtrace, two single steps, and a write syscall caught at entry and exit. Then the browser GUI on the same program: stopped at level_c, then the Syscalls view after the target exits.</span></figcaption>
+          </figure>
+        
         
           <figure style="margin: 0px; display: grid; gap: 8px;">
             <a href="assets/diagrams/lodestone-architecture.png" target="_blank" rel="noopener" class="scp2" style="display: block; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm);">

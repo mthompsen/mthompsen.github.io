@@ -68,6 +68,11 @@
         <p style="margin: 0px; font-size: 17px; line-height: 1.55; text-wrap: pretty;"><span class="sc-interp">NIST SP 800-53 / RMF compliance toolkit: describe a system in YAML, get a categorization, a baseline, a System Security Plan, a host scan, and a control-by-control report.</span></p>
         
         
+          <figure style="margin: 0px; display: grid; gap: 8px;">
+            <video src="assets/videos/castellan-demo.mp4" poster="assets/videos/castellan-demo.jpg" controls="" preload="none" playsinline="playsinline" aria-label="Terminal session running castellan categorize, checks, scan and report." style="display: block; width: 100%; height: auto; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); background: var(--color-bg);"></video>
+            <figcaption style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; line-height: 1.5; color: var(--color-neutral-300); text-wrap: pretty;">Demo · <span class="sc-interp">A real run on a WSL Ubuntu host without root: categorize (Moderate), the list of checks, a scan with 8 pass, 5 fail, 1 error and 6 not applicable (the error is /etc/shadow, unreadable without root, reported honestly), then the report and POA&amp;M it writes.</span></figcaption>
+          </figure>
+        
         
           <figure style="margin: 0px; display: grid; gap: 8px;">
             <a href="assets/diagrams/castellan-architecture.png" target="_blank" rel="noopener" class="scp2" style="display: block; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm);">

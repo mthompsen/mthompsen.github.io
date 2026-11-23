@@ -357,7 +357,7 @@
         <sc-if value="{{ active.hasContext }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; color: var(--color-neutral-300);">{{ active.context }}</p></sc-if>
         <sc-if value="{{ active.hasVideo }}" hint-placeholder-val="{{ false }}">
           <figure style="margin: 0; display: grid; gap: 8px;">
-            <video src="{{ active.video.src }}" poster="{{ active.video.poster }}" controls="" preload="none" playsinline="" aria-label="{{ active.video.alt }}" style="display: block; width: 100%; height: auto; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); background: var(--color-bg);"></video>
+            <video src="{{ active.video.src }}" poster="{{ active.video.poster }}" controls="controls" preload="none" playsinline="playsinline" aria-label="{{ active.video.alt }}" style="display: block; width: 100%; height: auto; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); background: var(--color-bg);"></video>
             <figcaption style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.5; color: var(--color-neutral-300); text-wrap: pretty;">Demo · {{ active.video.caption }}</figcaption>
           </figure>
         </sc-if>

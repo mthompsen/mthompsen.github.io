@@ -68,6 +68,11 @@
         <p style="margin: 0px; font-size: 17px; line-height: 1.55; text-wrap: pretty;"><span class="sc-interp">Hardens a fresh Rocky Linux 9 server toward the DISA RHEL 9 STIG with Ansible, proves it with OpenSCAP scans before and after, and exports NIST SP 800-53 evidence as OSCAL.</span></p>
         
         
+          <figure style="margin: 0px; display: grid; gap: 8px;">
+            <video src="assets/videos/rampart-demo.mp4" poster="assets/videos/rampart-demo.jpg" controls="" preload="none" playsinline="playsinline" aria-label="Terminal session running make oscal and make report on the saved scans, then the generated before and after report." style="display: block; width: 100%; height: auto; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); background: var(--color-bg);"></video>
+            <figcaption style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; line-height: 1.5; color: var(--color-neutral-300); text-wrap: pretty;">Demo · <span class="sc-interp">No VM is booted here: this replays the saved OpenSCAP results from the 2026-11-14 lab run, as the video states. make oscal validates the export (0 schema errors), make report rebuilds the summary, and the HTML report shows 38.5% before and 94.4% after, changed rules, failures with reasons and 800-53 coverage.</span></figcaption>
+          </figure>
+        
         
           <figure style="margin: 0px; display: grid; gap: 8px;">
             <a href="assets/diagrams/rampart-architecture.png" target="_blank" rel="noopener" class="scp2" style="display: block; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm);">
